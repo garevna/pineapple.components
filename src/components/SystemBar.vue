@@ -1,5 +1,4 @@
 <template>
-<!-- <v-container> -->
   <v-system-bar app fixed color="primary" class="px-2 px-sm-4 px-md-10 px-lg-12" height="40" width="100%">
     <v-row d-flex align="center" justify="end" class="mr-10">
       <v-spacer class="d-none d-lg-flex d-xl-flex"></v-spacer>
@@ -14,7 +13,6 @@
       </span>
       <span width="10" height="10" class="mr-4">
         <a :href="linkedin" target="_blank">
-          <!-- <v-img src="@/assets/icons/linkedin.svg" width="12" height="12" contain></v-img> -->
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2.793 3.8606H0.383978C0.277062 3.8606 0.19043 3.94727 0.19043 4.05414V11.7933C0.19043 11.9002 0.277062 11.9868 0.383978 11.9868H2.793C2.89991 11.9868 2.98655 11.9002 2.98655 11.7933V4.05414C2.98655 3.94727 2.89991 3.8606 2.793 3.8606Z" fill="white"/>
             <path d="M1.58965 0.0131836C0.71311 0.0131836 0 0.725519 0 1.60109C0 2.47705 0.71311 3.18966 1.58965 3.18966C2.4655 3.18966 3.17803 2.47702 3.17803 1.60109C3.17806 0.725519 2.4655 0.0131836 1.58965 0.0131836Z" fill="white"/>
@@ -24,7 +22,6 @@
       </span>
       <span width="10" height="10">
         <a :href="facebook" target="_blank">
-          <!-- <v-img src="@/assets/icons/facebook.svg" width="12" height="12" contain></v-img> -->
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5.625 3.4375V2.1875C5.625 1.8425 5.905 1.5625 6.25 1.5625H6.875V0H5.625C4.58938 0 3.75 0.839375 3.75 1.875V3.4375H2.5V5H3.75V10H5.625V5H6.875L7.5 3.4375H5.625Z" fill="white"/>
           </svg>
@@ -32,7 +29,6 @@
       </span>
     </v-row>
   </v-system-bar>
-<!-- </v-container> -->
 </template>
 
 <style scoped>
@@ -41,6 +37,7 @@
   font-size: 16px;
   color: #ffffff;
   cursor: pointer;
+  font-family: Gilroy;
 }
 </style>
 
