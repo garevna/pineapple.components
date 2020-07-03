@@ -23,17 +23,19 @@ import 'pineapple-testimonials/dist/pineapple-testimonials.css'
 <Testimonials :content="reviews" :page.sync="goto"/>
 ```
 
-where *content* should be the object with two properties:
+where *reviews* should be the object with two properties:
 
-• *content.header* (before)
+• *reviews.header* (before)
 
-• *content.button* (after)
+• *reviews.button* (after)
 
->> If the property *content.button* is absent the button will not be shown
+> If the property *reviews.button* is absent the button will not be shown
 
->> If the property *content.button* is present the value of *goto* should point the section on the page where to scroll to
+> If the property *reviews.button* is present the value of *goto* should point the section on the page where to scroll to
 
-### Add the global styles and fonts to project
+________________________
+
+#### You can add the global styles and fonts to the project from this package
 
 You can install the fonts and variables of pineapple.net.au projects so:
 

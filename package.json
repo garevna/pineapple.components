@@ -1,8 +1,10 @@
 {
   "name": "pineapple-testimonials",
   "version": "1.0.0",
-  "description": "Component for pineapple.net.au projects",
-  "keywords": ["pineapple", "testimonials", "component"],
+  "description": "Component for npm registry",
+  "keywords": ["pineapple", "npm", "registry", "testimonials"],
+  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "repository": "https://github.com/garevna/pineapple.components/tree/testimonials",
   "main": "./dist/pineapple-testimonials.common.js",
   "files": [
     "dist/*",
