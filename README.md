@@ -1,4 +1,4 @@
-# pineapple-testimonials
+# pineapple-footer
 
 This component is designed to be utilized in pineapple.net.au projects only.
 
@@ -6,32 +6,22 @@ It needs the data from vuex store and can't be used outside the pineapple.net.au
 
 ## install component
 ```
-yarn add pineapple-testimonials
+yarn add pineapple-footer
 ```
 
 ### Load the component and it's styles
 
 App.vue
 ```
-import Testimonials from 'pineapple-testimonials'
-import 'pineapple-testimonials/dist/pineapple-testimonials.css'
+import Footer from 'pineapple-footer'
+import 'pineapple-footer/dist/pineapple-footer.css'
 ```
 
-### Use
+### Use the component
 
 ```
-<Testimonials :content="reviews" :page.sync="goto"/>
+<Footer />
 ```
-
-where *content* should be the object with two properties:
-
-• *content.header* (before)
-
-• *content.button* (after)
-
->> If the property *content.button* is absent the button will not be shown
-
->> If the property *content.button* is present the value of *goto* should point the section on the page where to scroll to
 
 ### Add the global styles and fonts to project
 
@@ -39,13 +29,13 @@ You can install the fonts and variables of pineapple.net.au projects so:
 
 ###### main.js
 ```
-import 'pineapple-testimonials/css/fonts.scss'
-import 'pineapple-testimonials/css/variables.scss'
+import 'pineapple-footer/css/fonts.scss'
+import 'pineapple-footer/css/variables.scss'
 ```
 
 You can install global styles of pineapple.net.au projects so:
 
 ###### App.vue
 ```
-import 'pineapple-testimonials/css/main.css'
+import 'pineapple-footer/css/main.css'
 ```
