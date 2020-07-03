@@ -23,7 +23,9 @@ import 'pineapple-footer/dist/pineapple-footer.css'
 <Footer />
 ```
 
-### Add the global styles and fonts to project
+_____________________________
+
+#### You can add the global styles and fonts to the project from this package
 
 You can install the fonts and variables of pineapple.net.au projects so:
 

@@ -1,6 +1,10 @@
 {
   "name": "pineapple-footer",
-  "version": "2.0.4",
+  "version": "2.0.5",
+  "description": "Component for npm registry",
+  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "keywords": ["pineapple", "component", "npm", "registry", "footer"],
+  "repository": "https://github.com/garevna/pineapple.components/tree/footer",
   "main": "./dist/pineapple-footer.common.js",
   "files": [
     "dist/*",
