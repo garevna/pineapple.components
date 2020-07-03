@@ -1,11 +1,11 @@
 {
-  "name": "pineapple-testimonials",
+  "name": "pineapple-system-bar",
   "version": "1.0.0",
   "description": "Component for npm registry",
-  "keywords": ["pineapple", "npm", "registry", "testimonials"],
+  "keywords": ["pineapple", "npm", "registry", "system-bar"],
   "author": "garevna<irina.h.fylyppova@gmail.com>",
-  "repository": "https://github.com/garevna/pineapple.components/tree/testimonials",
-  "main": "./dist/pineapple-testimonials.common.js",
+  "repository": "https://github.com/garevna/pineapple.components/tree/system-bar",
+  "main": "./dist/pineapple-system-bar.common.js",
   "files": [
     "dist/*",
     "css/*"

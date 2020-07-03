@@ -1,4 +1,4 @@
-# pineapple-testimonials
+# pineapple-system-bar
 
 This component is designed to be utilized in pineapple.net.au projects only.
 
@@ -6,32 +6,22 @@ It needs the data from vuex store and can't be used outside the pineapple.net.au
 
 ## install component
 ```
-yarn add pineapple-testimonials
+yarn add pineapple-system-bar
 ```
 
 ### Load the component and it's styles
 
 App.vue
 ```
-import Testimonials from 'pineapple-testimonials'
-import 'pineapple-testimonials/dist/pineapple-testimonials.css'
+import SystemBar from 'pineapple-system-bar'
+import 'pineapple-system-bar/dist/pineapple-system-bar.css'
 ```
 
 ### Use
 
 ```
-<Testimonials :content="reviews" :page.sync="goto"/>
+<SystemBar />
 ```
-
-where *reviews* should be the object with two properties:
-
-• *reviews.header* (before)
-
-• *reviews.button* (after)
-
-> If the property *reviews.button* is absent the button will not be shown
-
-> If the property *reviews.button* is present the value of *goto* should point the section on the page where to scroll to
 
 ________________________
 
@@ -41,13 +31,13 @@ You can install the fonts and variables of pineapple.net.au projects so:
 
 ###### main.js
 ```
-import 'pineapple-testimonials/css/fonts.scss'
-import 'pineapple-testimonials/css/variables.scss'
+import 'pineapple-system-bar/css/fonts.scss'
+import 'pineapple-system-bar/css/variables.scss'
 ```
 
 You can install global styles of pineapple.net.au projects so:
 
 ###### App.vue
 ```
-import 'pineapple-testimonials/css/main.css'
+import 'pineapple-system-bar/css/main.css'
 ```
