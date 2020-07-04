@@ -4,7 +4,7 @@
 
 It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au</sup>
 
-## install component
+## Install component
 ```
 yarn add pineapple-testimonials
 ```
@@ -15,6 +15,13 @@ App.vue
 ```
 import 'pineapple-testimonials'
 import 'pineapple-testimonials/dist/pineapple-testimonials.css'
+```
+
+### Node.js
+
+```
+const Testimonials = require('pineapple-testimonials')
+const testimonialStyles = require('pineapple-testimonials/dist/pineapple-testimonials.css')
 ```
 
 ### Using <script> tag
