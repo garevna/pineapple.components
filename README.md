@@ -1,8 +1,8 @@
 # pineapple-testimonials
 
-This component is designed to be utilized in pineapple.net.au projects only.
+<sup>This component is designed to be utilized in pineapple.net.au projects only.<br>
 
-It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au
+It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au</sup>
 
 ## install component
 ```
@@ -13,11 +13,17 @@ yarn add pineapple-testimonials
 
 App.vue
 ```
-import Testimonials from 'pineapple-testimonials'
+import 'pineapple-testimonials'
 import 'pineapple-testimonials/dist/pineapple-testimonials.css'
 ```
 
-### Use
+### Using <script> tag
+
+```
+<script src="https://registry.npmjs.org/pineapple-testimonials"></script>
+```
+
+## Usage
 
 ```
 <Testimonials :content="reviews" :page.sync="goto"/>
