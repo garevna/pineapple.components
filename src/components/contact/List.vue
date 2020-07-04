@@ -6,6 +6,7 @@
       class="combo-box-input"
       v-model="selected"
       :label="field.placeholder"
+      :error="field.error"
   ></v-select>
 </template>
 
@@ -18,13 +19,8 @@
 
 <script>
 
-import { VSelect } from 'vuetify/lib'
-
 export default {
   name: 'List',
-  components: {
-    VSelect
-  },
   props: ['fieldIndex'],
   computed: {
     field () {
@@ -35,6 +31,11 @@ export default {
         return this.field.value
       },
       set (val) {
+        this.field.error = false
+        this.$store.commit('contact/SET_ERROR', {
+          num: this.fieldIndex,
+          value: this.field.error
+        })
         this.$store.commit('contact/UPDATE_USER_INFO', {
           num: this.fieldIndex,
           value: val

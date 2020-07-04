@@ -1,6 +1,7 @@
 <template>
   <v-text-field
-      :placeholder="field.placeholder"
+      :label="field.placeholder"
+      :error="field.error"
       outlined
       hide-details
       height="32"
@@ -41,13 +42,8 @@
 
 <script>
 
-import { VTextField } from 'vuetify/lib'
-
 export default {
   name: 'Combo',
-  components: {
-    VTextField
-  },
   props: ['fieldIndex'],
   data () {
     return {

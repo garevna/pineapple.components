@@ -9,6 +9,7 @@
       class="user-inputs"
       :append-icon="validationIcon"
       @input="validate($event)"
+      :error="field.error"
   ></v-text-field>
 </template>
 
@@ -41,13 +42,8 @@
 
 <script>
 
-import { VTextField } from 'vuetify/lib'
-
 export default {
   name: 'InputWithValidation',
-  components: {
-    VTextField
-  },
   props: ['fieldIndex'],
   data () {
     return {

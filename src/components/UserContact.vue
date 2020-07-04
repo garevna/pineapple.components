@@ -169,6 +169,19 @@ export default {
       //   this.popupEmailDisabled = true
       //   return
       // }
+      let err = false
+      this.fields.forEach((field, index) => {
+        field.error = field.required && !field.value
+        this.$store.commit('contact/SET_ERROR', {
+          num: index,
+          value: field.error
+        })
+        err = err || field.error
+      })
+      if (err) {
+        this.popupErrorOpened = true
+        return
+      }
       this.progress = true
       if (await this.sendEmail()) this.popupOpened = true
       else this.popupErrorOpened = true

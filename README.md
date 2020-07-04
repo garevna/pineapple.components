@@ -3,20 +3,35 @@
 <sup>This component is designed to be utilized in pineapple.net.au projects only.<br>
 It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of **pineapple.net.au**</sup>
 
-## install component
+## Install the component
+
 ```
 yarn add pineapple-contact-form
 ```
 
-### Load the component and it's styles
+#### Add with <script> tag
+###### (Not recommended)
+```
+<script src="https://registry.npmjs.org/pineapple-contact-form"></script>
+```
 
-App.vue
+## Import the component and it's styles
+
+###### It'll be the global component UserContact
+
 ```
 import 'pineapple-contact-form'
 import 'pineapple-contact-form/dist/pineapple-contact-form.css'
 ```
 
-### Use
+### Node.js
+
+```
+const ContactForm = require('pineapple-contact-form')
+const ContactFormStyles = require('pineapple-contact-form/dist/pineapple-contact-form.css')
+```
+
+## Usage
 
 ```
 <UserContact :userForm="userForm" />
