@@ -36,15 +36,15 @@ const testimonialStyles = require('pineapple-testimonials/dist/pineapple-testimo
 <Testimonials :content="reviews" :page.sync="goto"/>
 ```
 
-where *reviews* should be the object with two properties:
+where **reviews** should be the object with two properties:
 
-• *reviews.header* (before)
+• **_reviews.header_** (before)
 
-• *reviews.button* (after)
+• **_reviews.button_** (after)
 
-> If the property *reviews.button* is absent the button will not be shown
+> If the property **_reviews.header_** is absent the button will not be shown
 
-> If the property *reviews.button* is present the value of *goto* should point the section on the page where to scroll to
+> If the property **_reviews.button_** is present then the value of **_goto_** should point the section on the page where to scroll to
 
 ________________________
 
