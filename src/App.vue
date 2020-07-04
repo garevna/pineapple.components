@@ -7,6 +7,7 @@
         <v-btn @click="popupErrorOpened = true">Error</v-btn>
         <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
       </v-container>
+      <UserContact :userForm="userForm" />
       <PopupError :opened.sync="popupErrorOpened" />
       <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
       <Popup :opened.sync="popupOpened" />
@@ -19,10 +20,15 @@
 
 import { mapState, mapActions } from 'vuex'
 
-import '@/css/main.css'
+import SystemBar from 'pineapple-system-bar'
+import 'pineapple-system-bar/dist/pineapple-system-bar.css'
+import Footer from 'pineapple-footer'
+import 'pineapple-footer/dist/pineapple-footer.css'
 
-import SystemBar from './components/SystemBar.vue'
-import Footer from './components/Footer.vue'
+import 'pineapple-footer/css/main.css'
+
+import UserContact from './components/UserContact.vue'
+
 import Popup from './components/Popup.vue'
 import PopupError from './components/PopupError.vue'
 import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
@@ -35,17 +41,22 @@ export default {
     Popup,
     PopupError,
     PopupEmailDisabled,
+    UserContact,
     Footer
   },
 
   data: () => ({
+    ready: false,
+    page: null,
+    goto: null,
     popupOpened: false,
     popupErrorOpened: false,
     popupEmailDisabled: false
   }),
   computed: {
     ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer'])
+    ...mapState('content', ['browserTabTitle', 'footer']),
+    ...mapState('page-1', ['userForm'])
   },
   methods: {
     ...mapActions('content', {
@@ -53,6 +64,9 @@ export default {
     }),
     ...mapActions('testimonials', {
       getTestimonials: 'GET_CONTENT'
+    }),
+    ...mapActions('contact', {
+      updateFields: 'SET_FIELDS_TO_SHOW'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
@@ -62,6 +76,7 @@ export default {
     this.getContent()
       .then((response) => {
         document.title = this.browserTabTitle
+        this.updateFields(this.userForm.fieldsToShow)
         this.ready = true
       })
     this.getTestimonials()
