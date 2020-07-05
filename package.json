@@ -1,11 +1,11 @@
 {
-  "name": "pineapple-footer",
-  "version": "2.0.8",
+  "name": "pineapple-faq",
+  "version": "1.0.0",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
-  "keywords": ["pineapple", "component", "npm", "registry", "footer"],
-  "repository": "https://github.com/garevna/pineapple.components/tree/footer",
-  "main": "./dist/pineapple-footer.common.js",
+  "keywords": ["pineapple", "component", "npm", "registry", "faq"],
+  "repository": "https://github.com/garevna/pineapple.components/tree/faq",
+  "main": "./dist/pineapple-faq.common.js",
   "files": [
     "dist/*",
     "css/*",
@@ -15,13 +15,12 @@
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "footer": "vue-cli-service build --target lib --name pineapple-footer ./src/components/footer-index.js",
+    "faq": "vue-cli-service build --target lib --name pineapple-faq ./src/components/faq-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "email-validator": "^2.0.4",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",

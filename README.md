@@ -1,4 +1,4 @@
-# pineapple-footer
+# pineapple-faq
 
 This component is designed to be utilized in pineapple.net.au projects only.
 
@@ -6,23 +6,21 @@ It needs the data from vuex store and can't be used outside the pineapple.net.au
 
 ## install component
 ```
-yarn add pineapple-footer
+yarn add pineapple-faq
 ```
-
-> Warning: This component use the global component **pineapple-popup**
 
 ### Load the component and it's styles
 
 App.vue
 ```
-import Footer from 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
+import Footer from 'pineapple-faq'
+import 'pineapple-faq/dist/pineapple-faq.css'
 ```
 
 ### Use the component
 
 ```
-<Footer />
+<FAQ />
 ```
 
 _____________________________
