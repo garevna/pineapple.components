@@ -9,6 +9,8 @@ It needs the data from vuex store and can't be used outside the pineapple.net.au
 yarn add pineapple-footer
 ```
 
+> Warning: This component use the global component **pineapple-popup**
+
 ### Load the component and it's styles
 
 App.vue

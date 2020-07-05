@@ -66,9 +66,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <Popup :opened.sync="popupOpened" />
-    <PopupError :opened.sync="popupErrorOpened" />
-    <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
+    <Popup :opened.sync="popupOpened" :type="popupType" />
   </v-card>
 </template>
 
@@ -103,10 +101,6 @@ import { VCard, VCardText, VRow, VCol, VTextField, VBtn } from 'vuetify/lib'
 
 import { mapState, mapActions } from 'vuex'
 
-import Popup from './Popup.vue'
-import PopupEmailDisabled from './PopupEmailDisabled.vue'
-import PopupError from './PopupError.vue'
-
 const emailValidator = require('email-validator')
 
 export default {
@@ -117,10 +111,7 @@ export default {
     VRow,
     VCol,
     VTextField,
-    VBtn,
-    Popup,
-    PopupError,
-    PopupEmailDisabled
+    VBtn
   },
   data () {
     return {
@@ -133,8 +124,7 @@ export default {
         email: () => emailValidator.validate(this.email) ? true : 'Invalid email'
       },
       popupOpened: false,
-      popupErrorOpened: false,
-      popupEmailDisabled: false
+      popupType: null
     }
   },
   computed: {
@@ -150,17 +140,21 @@ export default {
       this.name = ''
       this.email = ''
       this.phone = ''
+      this.popupType = null
     },
     submit () {
       if (location.host === 'garevna.github.io' || location.port) {
-        this.popupEmailDisabled = true
+        this.popupType = 'disabled'
+        this.popupOpened = true
         return
       }
       this.progress = true
       if (!this.name || !this.phone || !emailValidator.validate(this.email)) {
-        this.popupErrorOpened = true
+        this.popupType = 'error'
+        this.popupOpened = true
         return
       }
+      this.popupType = 'success'
       this.popupOpened = true
       this.sendEmail({
         subject: this.emailSubject,

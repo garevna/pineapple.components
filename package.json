@@ -1,6 +1,6 @@
 {
   "name": "pineapple-footer",
-  "version": "2.0.5",
+  "version": "2.0.8",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
   "keywords": ["pineapple", "component", "npm", "registry", "footer"],
@@ -8,16 +8,14 @@
   "main": "./dist/pineapple-footer.common.js",
   "files": [
     "dist/*",
-    "css/*"
+    "css/*",
+    "README.md"
   ],
   "scripts": {
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
-    "css-watch": "npm run css-build -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "popups": "vue-cli-service build --target lib --name pineapple-popups ./src/components/popups-index.js",
     "footer": "vue-cli-service build --target lib --name pineapple-footer ./src/components/footer-index.js",
-    "system-bar": "vue-cli-service build --target lib --name pineapple-system-bar ./src/components/system-bar-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
