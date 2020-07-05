@@ -8,6 +8,7 @@ It needs the data from vuex store and can't be used outside the pineapple.net.au
 ```
 yarn add pineapple-contact-form
 ```
+> Warning: This component use the global component **pineapple-popup**
 
 #### Add with <script> tag
 ###### (Not recommended)

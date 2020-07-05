@@ -64,9 +64,7 @@
       </v-btn>
     </v-card-text>
 
-    <Popup :opened.sync="popupOpened" />
-    <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-    <PopupError :opened.sync="popupErrorOpened" />
+    <Popup :opened.sync="popupOpened" :type="popupType" />
   </v-card>
 </template>
 
@@ -114,10 +112,6 @@ import Combo from './contact/Combo.vue'
 import InputWithValidation from './contact/InputWithValidation.vue'
 import InputMessage from './contact/InputMessage.vue'
 
-import Popup from './contact/Popup.vue'
-import PopupError from './contact/PopupError.vue'
-import PopupEmailDisabled from './contact/PopupEmailDisabled.vue'
-
 export default {
   name: 'UserContact',
   components: {
@@ -129,17 +123,13 @@ export default {
     List,
     NumberInput,
     Combo,
-    InputMessage,
-    Popup,
-    PopupError,
-    PopupEmailDisabled
+    InputMessage
   },
   props: ['userForm'],
   data () {
     return {
       popupOpened: false,
-      popupEmailDisabled: false,
-      popupErrorOpened: false,
+      popupType: null,
       fields: null,
       progress: false
     }
@@ -166,7 +156,8 @@ export default {
 
     async sendUserRequest () {
       // if (location.host === 'garevna.github.io' || location.port) {
-      //   this.popupEmailDisabled = true
+      //   this.popupType = 'disabled'
+      //   this.popupOpened = true
       //   return
       // }
       let err = false
@@ -179,13 +170,14 @@ export default {
         err = err || field.error
       })
       if (err) {
-        this.popupErrorOpened = true
+        this.popupType = 'error'
+        this.popupOpened = true
         return
       }
       this.progress = true
-      if (await this.sendEmail()) this.popupOpened = true
-      else this.popupErrorOpened = true
+      this.popupType = await this.sendEmail() ? 'success' : 'error'
       this.progress = false
+      this.popupOpened = true
     }
   },
   mounted () {
