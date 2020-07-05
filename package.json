@@ -1,11 +1,11 @@
 {
-  "name": "pineapple-faq",
+  "name": "pineapple-internet-plans",
   "version": "1.0.0",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
   "keywords": ["pineapple", "component", "npm", "registry", "faq"],
-  "repository": "https://github.com/garevna/pineapple.components/tree/faq",
-  "main": "./dist/pineapple-faq.common.js",
+  "repository": "https://github.com/garevna/pineapple.components/tree/internet-plans",
+  "main": "./dist/pineapple-internet-plans.common.js",
   "files": [
     "dist/*",
     "css/*",
@@ -15,7 +15,7 @@
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "faq": "vue-cli-service build --target lib --name pineapple-faq ./src/components/faq-index.js",
+    "internet-plans": "vue-cli-service build --target lib --name pineapple-internet-plans ./src/components/internet-plans-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
