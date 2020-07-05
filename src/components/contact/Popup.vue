@@ -12,10 +12,10 @@
           </svg>
         </figure>
         <v-card-text class="text-center">
-          <h2 color="primary">Thanks!</h2>
+          <h2 :color="content.color">{{ content.header }}</h2>
         </v-card-text>
         <v-card-text>
-          <p>We'll get back to you shortly</p>
+          <p>{{ content.text }}</p>
         </v-card-text>
         <v-card-text class="text-center">
           <v-btn
@@ -50,6 +50,32 @@ export default {
     VCardText,
     VBtn
   },
-  props: ['opened']
+  props: ['type', 'opened', 'data'],
+  data () {
+    return {
+      variants: {
+        success: {
+          header: 'Thanks!',
+          color: '#4CAF50',
+          text: 'We\'ll get back to you shortly'
+        },
+        error: {
+          header: 'Error',
+          color: '#900',
+          text: 'Please fill the form fields'
+        },
+        disabled: {
+          header: 'Sorry...',
+          color: '#000',
+          text: 'There is no ability to send your message to Pineapple because you use the demo version of the app'
+        }
+      }
+    }
+  },
+  computed: {
+    content () {
+      return this.data ? this.data : this.variants[this.type || 'success']
+    }
+  }
 }
 </script>
