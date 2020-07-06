@@ -3,14 +3,14 @@
           flat
           width="100%"
           class="transparent my-10"
-          v-if="internetPlans && plans"
+          v-if="plans"
   >
     <v-card-text class="text-center">
-      <h2>FIBRE <span class="green--text">INTERNET PLANS</span></h2>
+      <h2 v-html="header"></h2>
     </v-card-text>
 
-    <v-card-text v-if="internetPlans.text">
-      <p v-html="internetPlans.text"></p>
+    <v-card-text>
+      <p v-html="text"></p>
     </v-card-text>
 
     <v-card-text width="100%" class="mx-0 px-0 text-center">
@@ -65,11 +65,12 @@
     </v-slide-x-transition>
     <v-card-actions class="text-center my-4 mb-md-8">
       <v-btn
+          v-if="button"
           dark
           class="submit-button px-auto mx-auto"
-          @click="$emit('update:page', '#top')"
+          @click="$emit('update:page', goto)"
       >
-        Contact Us
+        {{ button }}
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -112,7 +113,23 @@ export default {
   computed: {
     ...mapState(['viewportWidth', 'plan']),
     ...mapState('internetPlans', ['plans']),
-    ...mapState('content', ['internetPlans']),
+    ...mapState('content', {
+      internetPlans: 'plans'
+    }),
+    header () {
+      return !!this.internetPlans && !!this.internetPlans.header
+        ? this.internetPlans.header
+        : 'FIBRE <span class="green--text">INTERNET PLANS</span>'
+    },
+    text () {
+      return !!this.internetPlans && !!this.internetPlans.text ? this.internetPlans.text : ''
+    },
+    button () {
+      return !!this.internetPlans && !!this.internetPlans.button ? this.internetPlans.button : 'Contact Us'
+    },
+    goto () {
+      return !!this.internetPlans && !!this.internetPlans.goto ? this.internetPlans.goto : '#top'
+    },
     carouselHeight () {
       return this.viewportWidth < 960 ? this.viewportWidth < 600 ? 420 : 480 : 420
     }
