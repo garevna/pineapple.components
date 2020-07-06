@@ -1,11 +1,11 @@
 {
-  "name": "pineapple-internet-plans",
-  "version": "1.0.7",
+  "name": "pineapple-how-to-connect",
+  "version": "1.0.0",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
-  "keywords": ["pineapple", "component", "npm", "registry", "faq"],
-  "repository": "https://github.com/garevna/pineapple.components/tree/internet-plans",
-  "main": "./dist/pineapple-internet-plans.common.js",
+  "keywords": ["pineapple", "component", "npm", "registry", "how-to-connect"],
+  "repository": "https://github.com/garevna/pineapple.components/tree/how-to-connect",
+  "main": "./dist/pineapple-how-to-connect.common.js",
   "files": [
     "dist/*",
     "css/*",
@@ -15,7 +15,7 @@
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "internet-plans": "vue-cli-service build --target lib --name pineapple-internet-plans ./src/components/internet-plans-index.js",
+    "how-to-connect": "vue-cli-service build --target lib --name pineapple-how-to-connect ./src/components/how-to-connect-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
