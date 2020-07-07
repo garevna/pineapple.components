@@ -1,9 +1,14 @@
 html, body {
   width: 100%;
-  width: 100%;
-  font-family: Gilroy;
+  max-width: 100%;
+  font-family: Gilroy!important;
 }
 
+.v-application,
+.v-application--wrap,
+.v-application * {
+  font-family: Gilroy!important;
+}
 .container,
 .container--fluid,
 .container.fill-height {
@@ -35,6 +40,7 @@ p {
   font-weight: normal;
   line-height: 180%;
   letter-spacing: 0.02em;
+  font-family: Gilroy;
 }
 
 .row {
@@ -83,8 +89,8 @@ svg.defs-only {
 
 @media (max-width: 400px), (max-height: 400px) {
   h1 { font-size: 26px; }
-  h2 { font-size: 22px; }
-  h3 { font-size: 18px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
   h4, h5 { font-size: 16px; }
   p {
     font-size: 14px!important;
