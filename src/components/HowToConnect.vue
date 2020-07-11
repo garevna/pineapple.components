@@ -32,6 +32,7 @@
       <v-btn
           class="submit-button"
           @click="$emit('update:page', howToConnect.goto)"
+          v-if="howToConnect.button && howToConnect.goto"
       >
           {{ howToConnect.button }}
       </v-btn>
@@ -83,7 +84,7 @@ export default {
   watch: {
     contact (val) {
       if (!val) return
-      this.$emit('update:page', 'contact')
+      this.$emit('update:page', '#contact')
       this.contact = false
     }
   }

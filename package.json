@@ -1,6 +1,6 @@
 {
   "name": "pineapple-how-to-connect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
   "keywords": ["pineapple", "component", "npm", "registry", "how-to-connect"],
@@ -22,7 +22,6 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
   },

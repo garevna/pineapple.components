@@ -27,7 +27,7 @@ _____________________________
 
 #### You can add the global styles and fonts to the project from this package
 
-You can install the fonts and variables of pineapple.net.au projects so:
+If you don't want to add pineapple-styles from npm registry you can install the fonts and variables of pineapple.net.au projects so:
 
 ###### main.js
 ```
