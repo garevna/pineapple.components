@@ -9,13 +9,17 @@ yarn add pineapple-styles
 
 ### Import styles
 
-main.js
+###### main.js
 ```
 import 'pineapple-styles/css/fonts.scss'
 import 'pineapple-styles/css/variables.scss'
 ```
 
-App.vue
+###### App.vue
 ```
 import 'pineapple-styles/css/main.css'
+```
+or simply
+```
+import 'pineapple-styles'
 ```
