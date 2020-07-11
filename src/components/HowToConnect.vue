@@ -4,8 +4,8 @@
       <v-card-text class="text-center">
         <h2>{{ howToConnect.header }}</h2>
       </v-card-text>
-      <v-card-text>
-        <p>{{ howToConnect.text }}</p>
+      <v-card-text v-if="howToConnect.text">
+        <p v-html="howToConnect.text"></p>
       </v-card-text>
     </v-card>
 
