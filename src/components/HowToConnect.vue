@@ -20,10 +20,10 @@
         >
           <v-img :src="item.icon" />
           <v-card-text class="text-center">
-            <h3>{{ item.title }}</h3>
+            <h3 v-html="item.title.split('\n').join('<br>')"></h3>
           </v-card-text>
           <v-card-text max-width="600" class="mx-auto">
-            <p>{{ item.text }}</p>
+            <p v-html="item.text.split('\n').join('<br>')"></p>
           </v-card-text>
         </v-card>
       </v-card>

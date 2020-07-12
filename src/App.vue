@@ -1,16 +1,7 @@
 <template>
   <v-app>
     <SystemBar />
-    <!-- <v-main app tag="main"> -->
-      <v-container fluid fill-height>
-        <v-btn @click="popupOpened = true">Success</v-btn>
-        <v-btn @click="popupErrorOpened = true">Error</v-btn>
-        <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
-      </v-container>
-      <PopupError :opened.sync="popupErrorOpened" />
-      <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-      <Popup :opened.sync="popupOpened" />
-    <!-- </v-main> -->
+    <HowToConnect :page.sync="page" />
     <Footer />
   </v-app>
 </template>
@@ -19,23 +10,27 @@
 
 import { mapState, mapActions } from 'vuex'
 
-import '@/css/main.css'
+import 'pineapple-styles'
 
-import SystemBar from './components/SystemBar.vue'
-import Footer from './components/Footer.vue'
-import Popup from './components/Popup.vue'
-import PopupError from './components/PopupError.vue'
-import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
+/* SystemBar */
+import 'pineapple-system-bar'
+import 'pineapple-system-bar/dist/pineapple-system-bar.css'
+
+/* Popup */
+import 'pineapple-popup'
+import 'pineapple-popup/dist/pineapple-popup.css'
+
+/* Footer */
+import 'pineapple-footer'
+import 'pineapple-footer/dist/pineapple-footer.css'
+
+import HowToConnect from '@/components/HowToConnect.vue'
 
 export default {
   name: 'App',
 
   components: {
-    SystemBar,
-    Popup,
-    PopupError,
-    PopupEmailDisabled,
-    Footer
+    HowToConnect
   },
 
   data: () => ({
@@ -59,7 +54,7 @@ export default {
     }
   },
   beforeMount () {
-    this.getContent()
+    this.getContent(5)
       .then((response) => {
         document.title = this.browserTabTitle
         this.ready = true

@@ -3802,11 +3802,6 @@ elliptic@^6.0.0, elliptic@^6.5.2:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-email-validator@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
-  integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
-
 emoji-regex@^7.0.1:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
@@ -7776,6 +7771,48 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
+pineapple-footer@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/pineapple-footer/-/pineapple-footer-2.0.9.tgz#e90f6f6f1f570a289a2e76f5be6ed0b119387407"
+  integrity sha512-2R0Twb4uXNM7kRPw46rw024d+mvIET+1lazgyzlZMJK5X7IJQRe2vFk7mcllxtiFnucZCZY2qNBnsjvtyq+mYw==
+  dependencies:
+    core-js "^3.6.5"
+    pineapple-popup "^1.0.7"
+    pineapple-styles "^1.1.0"
+    vue "^2.6.11"
+    vue-router "^3.3.4"
+    vuetify "^2.2.11"
+    vuex "^3.4.0"
+
+pineapple-popup@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/pineapple-popup/-/pineapple-popup-1.0.7.tgz#394a7e84fa844e1c9b81aeccaa4a9aabde080de2"
+  integrity sha512-QcUrFyWtZ0+5OkPeYNzNo23DRKOyjBFQrX0AuM8ygjrG2mzXVevapMnlfibbr4C6ggSXpabRUnVxabjwWD0hnQ==
+  dependencies:
+    core-js "^3.6.5"
+    vue "^2.6.11"
+    vuetify "^2.2.11"
+    vuex "^3.4.0"
+
+pineapple-styles@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pineapple-styles/-/pineapple-styles-1.1.0.tgz#ec5e51d19b67280d1e261cbac98f8d67962755db"
+  integrity sha512-KFAS9bSVruAtN4WgEOcnC9d5F50+k4iA1iJxt/3YlaGro536GJqODt7R1Rc40iqyH2p8JhkmMExSCeFWVa5nng==
+  dependencies:
+    core-js "^3.6.5"
+    vue "^2.6.11"
+    vuetify "^2.2.11"
+
+pineapple-system-bar@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/pineapple-system-bar/-/pineapple-system-bar-1.0.4.tgz#803719e7a2e8b5ae1ff0eeeeb5bc7f59cd85b4ea"
+  integrity sha512-s1GInOE7gQRCJMCEM2iaF6WG2h4UxBYotOQsf3y3g9gIgQ1LtvNCbz4UoIQ73+gBkMif1Bm4q5N+LjiPiZd22A==
+  dependencies:
+    core-js "^3.6.5"
+    vue "^2.6.11"
+    vuetify "^2.2.11"
+    vuex "^3.4.0"
+
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
@@ -8599,11 +8636,6 @@ regexpu-core@^4.7.0:
     regjsparser "^0.6.4"
     unicode-match-property-ecmascript "^1.0.4"
     unicode-match-property-value-ecmascript "^1.2.0"
-
-register-service-worker@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.7.1.tgz#6308347ac6c0af0f6c0b22ea5d59d25e836bc932"
-  integrity sha512-IdTfUZ4u8iJL8o1w8es8l6UMGPmkwHolUdT+UmM1UypC80IB4KbpuIlvwWVj8UDS7eJwkEYRcKRgfRX+oTmJsw==
 
 regjsgen@^0.5.1:
   version "0.5.2"
@@ -10292,7 +10324,7 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-router@^3.2.0:
+vue-router@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.3.4.tgz#4e38abc34a11c41b6c3d8244449a2e363ba6250b"
   integrity sha512-SdKRBeoXUjaZ9R/8AyxsdTqkOfMcI5tWxPZOUX5Ie1BTL5rPSZ0O++pbiZCeYeythiZIdLEfkDiQPKIaWk5hDg==

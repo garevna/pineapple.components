@@ -4,16 +4,12 @@
 const state = {
   mailEndpoint: 'https://api.pineapple.net.au/email/landing',
   emailSubject: 'Ultra-Fast Fibre To Your Home',
-  emailText: 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.',
-  messageForMail: '',
-  contactFormFields: {}
+  emailText: 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.'
 }
 
 const getters = {
   pages: (state, getters, rootState) => rootState.pages.filter(item => item !== 'Contact Us'),
-  selectors: (state, getters, rootState) => rootState.selectors.filter(item => item !== '#contact'),
-  types: (state, getters, rootState) => rootState.fieldTypes,
-  validators: (state, getters, rootState) => rootState.validators
+  selectors: (state, getters, rootState) => rootState.selectors.filter(item => item !== '#contact')
 }
 
 const mutations = {

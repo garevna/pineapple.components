@@ -4,7 +4,7 @@
 const state = {}
 
 const getters = {
-  contentEndpoint: (state, getters, rootState) => `${rootState.host}/content/2`,
+  contentEndpoint: (state, getters, rootState) => `${rootState.host}/content/5`,
   testimonialsEndpoint: (state, getters, rootState) => `${rootState.host}/testimonials`
 }
 
