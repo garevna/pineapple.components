@@ -158,22 +158,19 @@ export default {
     }
   },
   watch: {
-    userForm (val) {
-      this.setFieldsToShow(val.fieldsToShow)
-      this.ready = !!val
-    },
-    'userForm.fieldsToShow': {
+    userForm: {
       deep: true,
       handler (val) {
-        this.setFieldsToShow(val)
         this.ready = !!val
+        if (!val) return
+        this.setFieldsToShow(val.fieldsToShow)
       }
     }
   },
 
   methods: {
     setFieldsToShow (payload) {
-      if (!payload || !Array.isArray(payload)) return []
+      if (!payload || !Array.isArray(payload)) return null
       this.fields = payload.map((field) => {
         return {
           type: this.fieldTypes[field.type],
@@ -256,6 +253,9 @@ export default {
       this.progress = false
       this.popupOpened = true
     }
+  },
+  mounted () {
+    this.setFieldsToShow(this.userForm.fieldsToShow)
   }
 }
 
