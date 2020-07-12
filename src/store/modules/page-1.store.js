@@ -186,7 +186,7 @@ const actions = {
         value: content[field]
       }, { root: true })
     }
-    await dispatch('contact/SET_FIELDS_TO_SHOW', content.userForm.fieldsToShow, { root: true })
+    // await dispatch('contact/SET_FIELDS_TO_SHOW', content.userForm.fieldsToShow, { root: true })
     return true
   }
 }

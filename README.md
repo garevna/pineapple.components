@@ -1,135 +1,91 @@
 # pineapple-contact-form
 
-<sup>This component is designed to be utilized in pineapple.net.au projects only.<br>
-It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of **pineapple.net.au**</sup>
+This component is designed to be utilized in pineapple.net.au projects only.
 
-## Install the component
+It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au
 
+#### Warning:
+
+This component uses **pineapple-popup** component
+
+You should install it for the normal work of Contact Form:
+
+```
+yarn add pineapple-popup
+```
+
+and then import it in your app:
+```
+import pineapple-popup
+```
+
+____________________________________________
+
+## install component
 ```
 yarn add pineapple-contact-form
 ```
-> Warning: This component use the global component **pineapple-popup**
 
-#### Add with <script> tag
-###### (Not recommended)
-```
-<script src="https://registry.npmjs.org/pineapple-contact-form"></script>
-```
+### Load the component and it's styles
 
-## Import the component and it's styles
-
-###### It'll be the global component UserContact
-
+App.vue
 ```
 import 'pineapple-contact-form'
 import 'pineapple-contact-form/dist/pineapple-contact-form.css'
 ```
 
-### Node.js
+### Use the component
 
 ```
-const ContactForm = require('pineapple-contact-form')
-const ContactFormStyles = require('pineapple-contact-form/dist/pineapple-contact-form.css')
+<UserContact
+    :userForm="userForm"
+    :emailSubject="emailSubject"
+    :emailText="emailText"
+    :emailEndpoint="emailEndpoint"
+/>
 ```
 
-## Usage
+#### emailEndpoint
 
+Backend API endpoint to send data from the form
+
+_____________________________________________
+
+## userForm
+###### Fields of Form
+
+For normal work this component waits for the **userForm** object
+
+This object should contain such a props:
+
+* title (string)
+* button (string)
+* fieldsToShow (array of objects)
+
+**button** prop is the text that will be shown on the submit button face
+
+#### fieldsToShow
+
+is array of objects
+
+Each object describes the form field
 ```
-<UserContact :userForm="userForm" />
-```
-
-where **userForm** should be the object with the next set of fields:
-
-* **_title_** (string)
-* **_button_** (string)
-* **_fieldsToShow_** (array of objects)
-
-**_title_**  contains the text which will be shown at the top of form<br>
-**_button_** contains the text which will be shown on the button face<br>
-**_fieldsToShow_** is the array containing the object that describe the fields of user form
-
-#### Fields
-
-##### Types
-
-Each field of the form can be one of the types:
-
-* **text** (plain text without validation)
-* **email** (email)
-* **phone** (australian phone number)
-* **list** (selection field with the list of values)
-* **combo** (input field with the list of available values)
-* **number** (input field for digits only)
-* **message** (textarea)
-
-##### Required and placeholder
-
-If you want the field to be required set it's property **_required_** to `true`
-
-You should set the value of property **_placeholder_** because the fields have no labels
-
-##### Example:
-```
-userForm: {
-   title: 'Ask Questions Or Get Connected Today',
-   button: 'Get Connected',
-   fieldsToShow: [
-     {
-       type: 'text',
-       placeholder: 'Full name*',
-       required: true
-     },
-     {
-       type: 'email',
-       placeholder: 'Email*',
-       required: true
-     },
-     {
-       type: 'phone',
-       placeholder: 'Phone',
-       required: false
-     },
-     {
-       type: 'list',
-       placeholder: 'Building*',
-       available: ['Aurora', 'QV1', 'Conservatory'],
-       value: 'Conservatory',
-       required: true
-     },
-     {
-       type: 'number',
-       placeholder: 'Appt number*',
-       required: true
-     },
-     {
-       type: 'combo',
-       placeholder: 'Promocode',
-       available: ['FREEINTERNETAURORA', 'FREEINTERNETCONSERVATORY', 'FREEINTERNETQV1'],
-       required: false
-     },
-     {
-       type: 'message',
-       placeholder: 'Enquiry',
-       required: true
-     }
-  ]
+{
+  placeholder: '...', /* String | required */
+  type: '...', /* String | required! */
+  required: false, /* Boolean */
+  available: [...] /* Array of available values for the field | optional, for combo and list types only */
 }
 ```
-________________________
 
-#### You can add the global styles and fonts to the project from this package
+#### Field types
 
-You can install the fonts and variables of pineapple.net.au projects so:
-
-###### main.js
-```
-import 'pineapple-contact-form/css/fonts.scss'
-import 'pineapple-contact-form/css/variables.scss'
-```
-
-You can install global styles of pineapple.net.au projects so:
-
-###### App.vue
-```
-import 'pineapple-contact-form/css/main.css'
-```
+* text - simple text input field
+* number - simple number input field
+* email - input field with validation
+* postcode - input field with validation of australian post codes
+* state - selection field with validation of australian states
+* phone - field with validation of australian phone numbers
+* combo - input field with validation from the list of available values (_**available**_)
+* list - selection field from the list of available values (_**available**_)
+* message - textarea

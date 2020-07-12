@@ -15,21 +15,7 @@ const state = {
       { upload: 500, download: 500, price: 240, selected: false },
       { upload: 1000, download: 1000, price: 500, selected: false }
     ]
-  },
-  occupancyTypes: [
-    'Single Dwelling House',
-    'Multi Dwelling Unit',
-    'Apartment complex',
-    'Business Park',
-    'Office Building'
-  ],
-  infoSources: [
-    'Google',
-    'Friend',
-    'Facebook',
-    'Instagram',
-    'LinkedIn'
-  ]
+  }
 }
 
 const getters = {

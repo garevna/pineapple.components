@@ -6,7 +6,7 @@
       class="combo-box-input"
       v-model="selected"
       :label="field.placeholder"
-      :error="field.error"
+      :error="error"
   ></v-select>
 </template>
 
@@ -21,25 +21,15 @@
 
 export default {
   name: 'List',
-  props: ['fieldIndex'],
+  props: ['field', 'value', 'error'],
   computed: {
-    field () {
-      return this.$store.state.contact.contactFormFields[this.fieldIndex]
-    },
     selected: {
       get () {
-        return this.field.value
+        return this.value
       },
       set (val) {
-        this.field.error = false
-        this.$store.commit('contact/SET_ERROR', {
-          num: this.fieldIndex,
-          value: this.field.error
-        })
-        this.$store.commit('contact/UPDATE_USER_INFO', {
-          num: this.fieldIndex,
-          value: val
-        })
+        this.$emit('update:error', this.field.required && !val)
+        this.$emit('update:value', val)
       }
     }
   }

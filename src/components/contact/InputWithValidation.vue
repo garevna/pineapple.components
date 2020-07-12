@@ -44,7 +44,7 @@
 
 export default {
   name: 'InputWithValidation',
-  props: ['fieldIndex'],
+  props: ['field', 'value', 'error'],
   data () {
     return {
       normalColor: '#656565',
@@ -56,30 +56,21 @@ export default {
     }
   },
   computed: {
-    field () {
-      return this.$store.state.contact.contactFormFields[this.fieldIndex]
-    },
     result: {
       get () {
         return this.field.value
       },
       set (val) {
-        this.$store.commit('contact/UPDATE_USER_INFO', {
-          num: this.fieldIndex,
-          value: val
-        })
+        this.$emit('update:value', val)
       }
     }
   },
   methods: {
     validate (val) {
-      this.error = !this.field.validator(val)
-      this.$store.commit('contact/SET_ERROR', {
-        num: this.fieldIndex,
-        value: this.error
-      })
-      this.color = val.length === 0 ? this.normalColor : this.error ? this.errorColor : this.validColor
-      this.validationIcon = this.error ? '$invalid' : ''
+      const error = !this.field.validator(val) || (this.field.required && !val)
+      this.$emit('update:error', error)
+      this.color = error ? this.errorColor : this.validColor
+      this.validationIcon = error ? '$invalid' : ''
     }
   }
 }

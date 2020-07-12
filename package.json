@@ -1,6 +1,6 @@
 {
   "name": "pineapple-contact-form",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Component for npm registry",
   "keywords": [
     "pineapple",
@@ -15,7 +15,8 @@
   "main": "./dist/pineapple-contact-form.common.js",
   "files": [
     "dist/*",
-    "css/*"
+    "css/*",
+    "README.md"
   ],
   "scripts": {
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
@@ -32,6 +33,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "pineapple-popup": "^1.0.7",
+    "pineapple-styles": "^1.1.0",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"

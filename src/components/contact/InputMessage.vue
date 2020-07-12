@@ -1,7 +1,7 @@
 <template>
   <v-textarea
         :placeholder="field.placeholder"
-        :error="field.error"
+        :error="error"
         outlined
         color="#656565"
         style="margin-top:32px!important;"
@@ -18,25 +18,15 @@
 
 export default {
   name: 'InputMessage',
-  props: ['fieldIndex'],
+  props: ['field', 'value', 'error'],
   computed: {
-    field () {
-      return this.$store.state.contact.contactFormFields[this.fieldIndex]
-    },
     message: {
       get () {
         return this.field.value
       },
       set (val) {
-        this.field.error = this.field.value.length < 10
-        this.$store.commit('contact/SET_ERROR', {
-          num: this.fieldIndex,
-          value: this.field.error
-        })
-        this.$store.commit('contact/UPDATE_USER_INFO', {
-          num: this.fieldIndex,
-          value: val
-        })
+        this.$emit('update:error', val.length < 10)
+        this.$emit('update:value', val)
       }
     }
   }

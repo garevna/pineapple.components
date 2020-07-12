@@ -1,18 +1,11 @@
 <template>
   <v-app>
-    <SystemBar />
-    <!-- <v-main app tag="main"> -->
-      <v-container fluid fill-height>
-        <v-btn @click="popupOpened = true">Success</v-btn>
-        <v-btn @click="popupErrorOpened = true">Error</v-btn>
-        <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
-      </v-container>
-      <UserContact :userForm="userForm" />
-      <PopupError :opened.sync="popupErrorOpened" />
-      <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-      <Popup :opened.sync="popupOpened" />
-    <!-- </v-main> -->
-    <Footer />
+    <UserContact
+        :userForm="userForm"
+        :emailSubject="emailSubject"
+        :emailText="emailText"
+        :emailEndpoint="mailEndpoint"
+    />
   </v-app>
 </template>
 
@@ -20,29 +13,16 @@
 
 import { mapState, mapActions } from 'vuex'
 
-import SystemBar from 'pineapple-system-bar'
-import 'pineapple-system-bar/dist/pineapple-system-bar.css'
-import Footer from 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
-
-import 'pineapple-footer/css/main.css'
+import 'pineapple-styles'
+import 'pineapple-popup'
 
 import UserContact from './components/UserContact.vue'
-
-import Popup from './components/Popup.vue'
-import PopupError from './components/PopupError.vue'
-import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
 
 export default {
   name: 'App',
 
   components: {
-    SystemBar,
-    Popup,
-    PopupError,
-    PopupEmailDisabled,
-    UserContact,
-    Footer
+    UserContact
   },
 
   data: () => ({
@@ -54,19 +34,13 @@ export default {
     popupEmailDisabled: false
   }),
   computed: {
-    ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer']),
-    ...mapState('page-1', ['userForm'])
+    ...mapState(['viewportWidth']),
+    ...mapState('content', ['userForm']),
+    ...mapState('contact', ['emailSubject', 'emailText', 'mailEndpoint'])
   },
   methods: {
     ...mapActions('content', {
       getContent: 'GET_CONTENT'
-    }),
-    ...mapActions('testimonials', {
-      getTestimonials: 'GET_CONTENT'
-    }),
-    ...mapActions('contact', {
-      updateFields: 'SET_FIELDS_TO_SHOW'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
@@ -76,10 +50,8 @@ export default {
     this.getContent()
       .then((response) => {
         document.title = this.browserTabTitle
-        this.updateFields(this.userForm.fieldsToShow)
         this.ready = true
       })
-    this.getTestimonials()
   },
   mounted () {
     this.onResize()
