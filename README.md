@@ -4,12 +4,35 @@ This component is designed to be utilized in pineapple.net.au projects only.
 
 It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au
 
+**Warning**
+
+Component needs **_pineapple-popup_** and **_pineapple-styles_** packages
+
+You should install them:
+
+```
+yarn add pineapple-styles
+yarn add pineapple-popup
+```
+
+and then import in your **App.vue** file:
+
+```
+import 'pineapple-styles'
+import 'pineapple-popup'
+```
+
+Besides you should import two files in your **main.js**:
+
+```
+import 'pineapple-styles/css/fonts.scss'
+import 'pineapple-styles/css/variables.scss'
+```
+
 ## install component
 ```
 yarn add pineapple-footer
 ```
-
-> Warning: This component use the global component **pineapple-popup**
 
 ### Load the component and it's styles
 
@@ -22,24 +45,5 @@ import 'pineapple-footer/dist/pineapple-footer.css'
 ### Use the component
 
 ```
-<Footer />
-```
-
-_____________________________
-
-#### You can add the global styles and fonts to the project from this package
-
-You can install the fonts and variables of pineapple.net.au projects so:
-
-###### main.js
-```
-import 'pineapple-footer/css/fonts.scss'
-import 'pineapple-footer/css/variables.scss'
-```
-
-You can install global styles of pineapple.net.au projects so:
-
-###### App.vue
-```
-import 'pineapple-footer/css/main.css'
+<Footer :emailEndpoint="emailEndpoint" />
 ```

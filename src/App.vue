@@ -1,17 +1,6 @@
 <template>
   <v-app>
-    <SystemBar />
-    <!-- <v-main app tag="main"> -->
-      <v-container fluid fill-height>
-        <v-btn @click="popupOpened = true">Success</v-btn>
-        <v-btn @click="popupErrorOpened = true">Error</v-btn>
-        <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
-      </v-container>
-      <PopupError :opened.sync="popupErrorOpened" />
-      <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-      <Popup :opened.sync="popupOpened" />
-    <!-- </v-main> -->
-    <Footer />
+    <Footer :emailEndpoint="mailEndpoint" />
   </v-app>
 </template>
 
@@ -19,22 +8,15 @@
 
 import { mapState, mapActions } from 'vuex'
 
-import '@/css/main.css'
+import 'pineapple-styles'
+import 'pineapple-popup'
 
-import SystemBar from './components/SystemBar.vue'
 import Footer from './components/Footer.vue'
-import Popup from './components/Popup.vue'
-import PopupError from './components/PopupError.vue'
-import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
 
 export default {
   name: 'App',
 
   components: {
-    SystemBar,
-    Popup,
-    PopupError,
-    PopupEmailDisabled,
     Footer
   },
 
@@ -45,7 +27,8 @@ export default {
   }),
   computed: {
     ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer'])
+    ...mapState('content', ['browserTabTitle', 'footer']),
+    ...mapState('contact', ['mailEndpoint'])
   },
   methods: {
     ...mapActions('content', {

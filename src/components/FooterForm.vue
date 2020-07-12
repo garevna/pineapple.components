@@ -1,9 +1,9 @@
 <template>
   <v-card flat class="transparent footer--top-content" :style="{ top: topContentTop }" v-if="footer">
     <v-card-text class="text-center">
-      <h2 class="white-text centered">{{ footer.topHead }}</h2>
+      <h2 class="white-text centered">{{ header }}</h2>
       <h5 class="white-text centered mt-8">
-          {{ footer.topText }}
+          {{ text }}
       </h5>
     </v-card-text>
     <v-row class="mx-auto">
@@ -59,13 +59,20 @@
                 hide-details
                 rounded
                 light
-                @click="submit"
+                @click="sendRequest"
                 style="color: #20731C"
             >Get started</v-btn>
           </v-card>
         </v-row>
       </v-col>
     </v-row>
+    <FooterFormSmall
+            :dialog.sync="dialog"
+            :name.sync="name"
+            :email.sync="email"
+            :phone.sync="phone"
+            :submitted.sync="submitted"
+    />
     <Popup :opened.sync="popupOpened" :type="popupType" />
   </v-card>
 </template>
@@ -99,9 +106,9 @@
 
 import { VCard, VCardText, VRow, VCol, VTextField, VBtn } from 'vuetify/lib'
 
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
-const emailValidator = require('email-validator')
+import FooterFormSmall from './FooterFormSmall.vue'
 
 export default {
   name: 'FooterForm',
@@ -111,8 +118,10 @@ export default {
     VRow,
     VCol,
     VTextField,
-    VBtn
+    VBtn,
+    FooterFormSmall
   },
+  props: ['emailEndpoint'],
   data () {
     return {
       name: '',
@@ -121,10 +130,12 @@ export default {
       send: false,
       rules: {
         required: value => !!value || 'Required',
-        email: () => emailValidator.validate(this.email) ? true : 'Invalid email'
+        email: () => this.validateEmail() ? true : 'Invalid email'
       },
       popupOpened: false,
-      popupType: null
+      popupType: null,
+      dialog: false,
+      submitted: false
     }
   },
   computed: {
@@ -132,35 +143,73 @@ export default {
     ...mapState('content', ['footer', 'emailSubject', 'emailText']),
     topContentTop () {
       return this.viewportWidth < 420 ? '80px' : this.viewportWidth > 1904 ? '288px' : '198px'
+    },
+    header () {
+      return this.footer && this.footer.topHead ? this.footer.topHead : 'READY TO GET STARTED?'
+    },
+    text () {
+      return this.footer && this.footer.topText ? this.footer.topText : 'Leave your inquiry and we\'ll get back to you within 24 hours on business days'
+    },
+    mailSubject () {
+      return this.emailSubject ? this.emailSubject : location.hostname
+    },
+    mailText () {
+      return this.emailText ? this.emailText : 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.'
+    }
+  },
+  watch: {
+    submitted (val) {
+      if (!val) return
+      this.submit()
+      this.submitted = false
     }
   },
   methods: {
-    ...mapActions('contact', { sendEmail: 'SEND_SIMPLE_EMAIL' }),
+    validateEmail () {
+      return this.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    },
     initFields () {
       this.name = ''
       this.email = ''
       this.phone = ''
       this.popupType = null
     },
+    async sendEmail (data) {
+      if (!this.emailEndpoint) return
+      const response = await fetch(this.emailEndpoint, {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+
+      return response.ok
+    },
+    sendRequest () {
+      if (this.viewportWidth <= 420) {
+        this.dialog = true
+      } else this.submit()
+    },
     submit () {
-      if (location.host === 'garevna.github.io' || location.port) {
+      if (location.host.indexOf('pineapple.net.au') < 0) {
         this.popupType = 'disabled'
         this.popupOpened = true
         return
       }
       this.progress = true
-      if (!this.name || !this.phone || !emailValidator.validate(this.email)) {
+      if (!this.name || !this.phone || !this.validateEmail()) {
         this.popupType = 'error'
         this.popupOpened = true
         return
       }
-      this.popupType = 'success'
-      this.popupOpened = true
-      this.sendEmail({
-        subject: this.emailSubject,
+
+      const response = this.sendEmail({
+        subject: this.mailSubject,
         email: this.email,
         message: `
-          <p>${this.emailText}</p>
+          <p>${this.mailText}</p>
           <fieldset>
             <legend>Details</legend>
             <h3>Name: ${this.name}</h3>
@@ -170,7 +219,9 @@ export default {
           <p><b>Get started!</b></p>
         `
       })
-      this.initFields()
+      this.popupType = response ? 'success' : 'error'
+      this.popupOpened = true
+      response && this.initFields()
     }
   }
 }
