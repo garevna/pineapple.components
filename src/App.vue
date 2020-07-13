@@ -1,70 +1,52 @@
 <template>
   <v-app>
-    <SystemBar />
-    <!-- <v-main app tag="main"> -->
-      <v-container fluid fill-height>
-        <v-btn @click="popupOpened = true">Success</v-btn>
-        <v-btn @click="popupErrorOpened = true">Error</v-btn>
-        <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
-      </v-container>
-      <PopupError :opened.sync="popupErrorOpened" />
-      <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-      <Popup :opened.sync="popupOpened" />
-    <!-- </v-main> -->
-    <Footer />
+    <Testimonials :page.sync="page" v-if="ready" />
   </v-app>
 </template>
 
 <script>
 
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
-import '@/css/main.css'
+import 'pineapple-styles'
 
-import SystemBar from './components/SystemBar.vue'
-import Footer from './components/Footer.vue'
-import Popup from './components/Popup.vue'
-import PopupError from './components/PopupError.vue'
-import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
+import Testimonials from './components/Testimonials.vue'
 
 export default {
   name: 'App',
 
   components: {
-    SystemBar,
-    Popup,
-    PopupError,
-    PopupEmailDisabled,
-    Footer
+    Testimonials
   },
 
-  data: () => ({
-    popupOpened: false,
-    popupErrorOpened: false,
-    popupEmailDisabled: false
-  }),
-  computed: {
-    ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer'])
+  data () {
+    return {
+      ready: false,
+      page: undefined
+    }
   },
+
+  watch: {
+    page (val) {
+      console.log(val)
+    }
+  },
+
   methods: {
     ...mapActions('content', {
       getContent: 'GET_CONTENT'
-    }),
-    ...mapActions('testimonials', {
-      getTestimonials: 'GET_CONTENT'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
   },
+
   beforeMount () {
     this.getContent()
       .then((response) => {
         document.title = this.browserTabTitle
         this.ready = true
       })
-    this.getTestimonials()
   },
   mounted () {
     this.onResize()

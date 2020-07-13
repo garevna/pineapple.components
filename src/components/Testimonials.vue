@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid class="homefone" v-if="ready">
+  <v-container fluid class="homefone">
     <v-card flat class="transparent mx-auto mt-12 mb-0 text-center" max-width="1360">
       <v-card-text class="text-center" max-width="940">
-        <h2 style="width: 100%; text-align: center">{{ content.header }}</h2>
+        <h2 style="width: 100%; text-align: center">{{ testimonials.header }}</h2>
       </v-card-text>
 
       <v-slide-group
@@ -13,7 +13,7 @@
         show-arrows
       >
         <v-slide-item
-          v-for="(testimonial, index) in testimonials"
+          v-for="(item, index) in content"
           :key="index"
           v-slot:default="{ active, toggle }"
         >
@@ -31,10 +31,10 @@
             >
               <v-scale-transition>
                 <TestimonialsCard
-                      :date="testimonial.date"
-                      :name="testimonial.name"
-                      :photo="testimonial.photo"
-                      :text="testimonial.text"
+                      :date="item.date"
+                      :name="item.name"
+                      :photo="item.photo"
+                      :text="item.text"
                 />
               </v-scale-transition>
             </v-row>
@@ -53,16 +53,16 @@
             class="testimonials transparent my-10"
       >
         <v-carousel-item
-          v-for="(testimonial, index) in testimonials"
+          v-for="(item, index) in content"
           :key="index"
         >
           <v-sheet height="100%" flat tile class="transparent">
             <v-row align="center" justify="center">
               <TestimonialsCard
-                    :date="testimonial.date"
-                    :name="testimonial.name"
-                    :photo="testimonial.photo"
-                    :text="testimonial.text"
+                    :date="item.date"
+                    :name="item.name"
+                    :photo="item.photo"
+                    :text="item.text"
               />
             </v-row>
           </v-sheet>
@@ -72,10 +72,10 @@
     <v-card-text class="text-center">
       <v-btn
           class="submit-button"
-          @click="$emit('update:page', content.goto)"
-          v-if="content.button"
+          @click="$emit('update:page', testimonials.goto)"
+          v-if="testimonials.button"
       >
-          {{ content.button }}
+          {{ testimonials.button }}
       </v-btn>
     </v-card-text>
   </v-container>
@@ -127,10 +127,15 @@ export default {
     VBtn,
     TestimonialsCard
   },
-  props: ['content', 'page'],
-  data: () => ({ model: 0 }),
+  props: ['page'],
+  data: () => ({
+    model: 0,
+    content: null,
+    contentEndpoint: 'https://api.pineapple.net.au/testimonials',
+    avatarsEndpoint: 'https://api.pineapple.net.au/avatars'
+  }),
   computed: {
-    ...mapState('testimonials', ['testimonials']),
+    ...mapState('content', ['testimonials']),
     ...mapState(['viewportWidth']),
     ready () {
       return !!this.content && !!this.testimonials
@@ -142,8 +147,13 @@ export default {
       return this.viewportWidth < 600 ? '12px' : '14px'
     }
   },
+  methods: {
+    async getContent () {
+      this.content = await (await fetch(this.contentEndpoint)).json()
+    }
+  },
   beforeMount () {
-    this.$store.dispatch('testimonials/GET_CONTENT')
+    this.getContent()
   }
 }
 

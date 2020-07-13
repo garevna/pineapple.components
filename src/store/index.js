@@ -2,8 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import modules from './modules'
 
-const emailValidator = require('email-validator')
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,29 +17,7 @@ export default new Vuex.Store({
     contactEndpoint: '',
     viewportWidth: window.innerWidth,
     viewportHeight: window.innerHeight,
-    plan: 'residential',
-    fieldTypes: {
-      text: 'input-with-validation',
-      number: 'input-with-validation',
-      email: 'input-with-validation',
-      phone: 'phone-number',
-      state: 'selector',
-      postcode: 'input-with-validation',
-      list: 'selector',
-      combo: 'combobox',
-      message: 'textarea'
-    },
-    validators: {
-      text: val => val.length > 2,
-      number: val => val.match(/^[0-9]*$/),
-      email: emailValidator.validate,
-      phone: null,
-      state: null,
-      postcode: val => Number(val) && Number(val) >= 3000 && Number(val) < 9999,
-      list: null,
-      combo: function (val) { return this.available.indexOf(val) !== -1 },
-      message: val => val.length >= 5
-    }
+    plan: 'residential'
   },
   modules,
 
@@ -51,12 +27,9 @@ export default new Vuex.Store({
       state.selectors = payload.selectors
     },
     CHANGE_VIEWPORT: (state) => {
-      console.log(state.viewportWidth, state.viewportHeight)
       state.viewportWidth = window.innerWidth
       state.viewportHeight = window.innerHeight
     },
-    CHANGE_VIEWPORT_WIDTH: (state, width) => { state.viewportWidth = width },
-    CHANGE_VIEWPORT_HEIGHT: (state, height) => { state.viewportHeight = height },
 
     CHANGE_PLAN: (state, plan) => { state.plan = plan },
     SET_PROPERTY: (state, payload) => {

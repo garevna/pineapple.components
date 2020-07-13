@@ -1,14 +1,19 @@
 {
   "name": "pineapple-testimonials",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "Component for npm registry",
-  "keywords": ["pineapple", "npm", "registry", "testimonials"],
+  "keywords": [
+    "pineapple",
+    "npm",
+    "registry",
+    "testimonials"
+  ],
   "author": "garevna<irina.h.fylyppova@gmail.com>",
   "repository": "https://github.com/garevna/pineapple.components/tree/testimonials",
   "main": "./dist/pineapple-testimonials.common.js",
   "files": [
     "dist/*",
-    "css/*"
+    "README.md"
   ],
   "scripts": {
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
@@ -19,6 +24,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "pineapple-styles": "^1.1.0",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
