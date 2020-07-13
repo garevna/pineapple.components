@@ -23,21 +23,23 @@ import 'pineapple-internet-plans/dist/pineapple-internet-plans.css'
 <InternetPlans :page.sync="page" />
 ```
 
-_____________________________
+_____________________________________
 
-#### You can add the global styles and fonts to the project from this package
+**Warning**
 
-You can install the fonts and variables of pineapple.net.au projects so:
+This component needs the styles of pineapple.net.au
+
+```
+yarn add pineapple-styles
+```
 
 ###### main.js
 ```
-import 'pineapple-internet-plans/css/fonts.scss'
-import 'pineapple-internet-plans/css/variables.scss'
+import 'pineapple-styles/css/fonts.scss'
+import 'pineapple-styles/css/variables.scss'
 ```
 
-You can install global styles of pineapple.net.au projects so:
-
-###### App.vue
+###### App.js
 ```
-import 'pineapple-internet-plans/css/main.css'
+import 'pineapple-styles'
 ```

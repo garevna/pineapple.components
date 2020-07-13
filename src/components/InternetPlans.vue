@@ -65,7 +65,6 @@
     </v-slide-x-transition>
     <v-card-actions class="text-center my-4 mb-md-8">
       <v-btn
-          v-if="button"
           dark
           class="submit-button px-auto mx-auto"
           @click="$emit('update:page', goto)"
@@ -107,12 +106,24 @@ export default {
   data () {
     return {
       contact: false,
-      selected: null
+      selected: null,
+      plans: {
+        residential: [
+          { upload: 50, download: 50, price: 49.99, selected: false },
+          { upload: 150, download: 150, price: 69, selected: false },
+          { upload: 500, download: 500, price: 140, selected: false },
+          { upload: 1000, download: 1000, price: 250, selected: false }
+        ],
+        business: [
+          { upload: 150, download: 150, price: 150, selected: false },
+          { upload: 500, download: 500, price: 240, selected: false },
+          { upload: 1000, download: 1000, price: 500, selected: false }
+        ]
+      }
     }
   },
   computed: {
     ...mapState(['viewportWidth', 'plan']),
-    ...mapState('internetPlans', ['plans']),
     ...mapState('content', {
       internetPlans: 'plans'
     }),
@@ -128,7 +139,7 @@ export default {
       return !!this.internetPlans && !!this.internetPlans.button ? this.internetPlans.button : 'Contact Us'
     },
     goto () {
-      return !!this.internetPlans && !!this.internetPlans.goto ? this.internetPlans.goto : '#top'
+      return !!this.internetPlans && !!this.internetPlans.goto ? this.internetPlans.goto : '#contact'
     },
     carouselHeight () {
       return this.viewportWidth < 960 ? this.viewportWidth < 600 ? 420 : 480 : 420

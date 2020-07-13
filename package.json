@@ -1,9 +1,16 @@
 {
   "name": "pineapple-internet-plans",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
-  "keywords": ["pineapple", "component", "npm", "registry", "faq"],
+  "keywords": [
+    "pineapple",
+    "component",
+    "npm",
+    "registry",
+    "internet plans",
+    "plans"
+  ],
   "repository": "https://github.com/garevna/pineapple.components/tree/internet-plans",
   "main": "./dist/pineapple-internet-plans.common.js",
   "files": [
@@ -21,6 +28,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "pineapple-styles": "^1.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",

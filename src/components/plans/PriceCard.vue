@@ -23,7 +23,7 @@
 <style>
 
 .price-card {
-  padding: 30px 20px;
+  padding: 28px 16px;
   margin: 40px 20px;
   width: 240px;
   height: 300px;
