@@ -15,9 +15,7 @@
                     hide-actions
                     height="70"
           >
-            <span height="35" width="110" class="ml-2 ml-sm-4 ml-md-6">
-              <v-img src="@/assets/logo.svg" contain width="110" height="35"></v-img>
-            </span>
+            <v-spacer></v-spacer>
             <v-btn text class="burger-menu" height="48" width="48">
               <span :class="burgerMenuClassFirst"></span>
               <span :class="burgerMenuClassSecond"></span>
@@ -46,9 +44,6 @@
             class="homefone app-bar d-none d-lg-block"
     >
         <v-row align="center" justify="center">
-          <span height="45" width="150" class="ml-10">
-            <v-img src="@/assets/logo.svg" contain width="150" height="45"></v-img>
-          </span>
           <v-spacer></v-spacer>
       <v-btn-toggle
             group
@@ -67,6 +62,7 @@
       </v-btn-toggle>
     </v-row>
   </v-app-bar>
+  <logo style="position: fixed; top: 60px; left: 32px; width: 110px; height: 35px; z-index: 100;" />
 </v-container>
 </template>
 
@@ -99,7 +95,7 @@
   height: 48px;
   min-width: 48px!important;
   max-width: 64px!important;
-  top: 8px!important;
+  top: 0!important;
   left: 0!important;
 }
 .burger-menu--first, .burger-menu--second,
@@ -139,7 +135,8 @@
 
 <script>
 
-import { VContainer, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VAppBar, VRow, VBtnToggle, VBtn, VImg } from 'vuetify/lib'
+import { VContainer, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VAppBar, VRow, VBtnToggle, VBtn } from 'vuetify/lib'
+import logo from '@/components/logo.vue'
 
 import { mapState } from 'vuex'
 
@@ -155,7 +152,7 @@ export default {
     VRow,
     VBtnToggle,
     VBtn,
-    VImg
+    logo
   },
   props: ['page'],
   data () {
