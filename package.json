@@ -1,16 +1,18 @@
 {
-  "name": "pineapple-testimonials",
-  "version": "1.0.8",
+  "name": "pineapple-main-nav-bar",
+  "version": "1.0.4",
   "description": "Component for npm registry",
+  "author": "garevna<irina.h.fylyppova@gmail.com>",
   "keywords": [
     "pineapple",
+    "component",
     "npm",
     "registry",
-    "testimonials"
+    "navigation",
+    "bar"
   ],
-  "author": "garevna<irina.h.fylyppova@gmail.com>",
-  "repository": "https://github.com/garevna/pineapple.components/tree/testimonials",
-  "main": "./dist/pineapple-testimonials.common.js",
+  "repository": "https://github.com/garevna/pineapple.components/tree/main-nav-bar",
+  "main": "./dist/pineapple-main-nav-bar.common.js",
   "files": [
     "dist/*",
     "README.md"
@@ -18,14 +20,17 @@
   "scripts": {
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "serve": "vue-cli-service serve",
-    "testimonials": "vue-cli-service build --target lib --name pineapple-testimonials ./src/components/testimonials-index.js",
+    "build": "vue-cli-service build",
+    "main-nav-bar": "vue-cli-service build --target lib --name pineapple-main-nav-bar ./src/components/main-nav-bar-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "pineapple-styles": "^1.1.0",
+    "pineapple-system-bar": "^1.0.4",
     "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
   },

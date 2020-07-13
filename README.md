@@ -1,66 +1,51 @@
-# pineapple-testimonials
+# pineapple-main-nav-bar
 
-<sup>This component is designed to be utilized in pineapple.net.au projects only.<br>
+This component is designed to be utilized in pineapple.net.au projects only.
 
-It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au</sup>
+It needs the data from vuex store and can't be used outside the pineapple.net.au and landing pages of pineapple.net.au
 
-## Install component
+## install component
 ```
-yarn add pineapple-testimonials
+yarn add pineapple-main-nav-bar
 ```
 
 ### Load the component and it's styles
 
 App.vue
 ```
-import 'pineapple-testimonials'
-import 'pineapple-testimonials/dist/pineapple-testimonials.css'
+import 'pineapple-main-nav-bar'
+import 'pineapple-main-nav-bar/dist/pineapple-main-nav-bar.css'
 ```
 
-### Node.js
+### Use the component
 
 ```
-const Testimonials = require('pineapple-testimonials')
-const testimonialStyles = require('pineapple-testimonials/dist/pineapple-testimonials.css')
+<MainNavBar :page.sync="page" />
 ```
 
-### Using <script> tag
+_____________________________________
+
+#### Warning 1
+
+This component maps and use **_mainNavButtons_** and **_mainNavSectors_**
+
+from the module **content** of vuex store
+
+#### Warning 2
+
+This component needs the styles of pineapple.net.au
 
 ```
-<script src="https://registry.npmjs.org/pineapple-testimonials"></script>
+yarn add pineapple-styles
 ```
-
-## Usage
-
-```
-<Testimonials :content="reviews" :page.sync="goto"/>
-```
-
-where **reviews** should be the object with two properties:
-
-• **_reviews.header_** (before)
-
-• **_reviews.button_** (after)
-
-> If the property **_reviews.header_** is absent the button will not be shown
-
-> If the property **_reviews.button_** is present then the value of **_goto_** should point the section on the page where to scroll to
-
-________________________
-
-#### You can add the global styles and fonts to the project from this package
-
-You can install the fonts and variables of pineapple.net.au projects so:
 
 ###### main.js
 ```
-import 'pineapple-testimonials/css/fonts.scss'
-import 'pineapple-testimonials/css/variables.scss'
+import 'pineapple-styles/css/fonts.scss'
+import 'pineapple-styles/css/variables.scss'
 ```
 
-You can install global styles of pineapple.net.au projects so:
-
-###### App.vue
+###### App.js
 ```
-import 'pineapple-testimonials/css/main.css'
+import 'pineapple-styles'
 ```
