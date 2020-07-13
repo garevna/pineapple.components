@@ -25,7 +25,13 @@ import 'pineapple-main-nav-bar/dist/pineapple-main-nav-bar.css'
 
 _____________________________________
 
-**Warning**
+#### Warning 1
+
+This component maps and use **_mainNavButtons_** and **_mainNavSectors_**
+
+from the module **content** of vuex store
+
+#### Warning 2
 
 This component needs the styles of pineapple.net.au
 
