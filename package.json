@@ -1,8 +1,8 @@
 {
   "name": "pineapple-testimonials",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Component for npm registry",
-  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
     "pineapple",
     "component",
@@ -29,7 +29,6 @@
     "core-js": "^3.6.5",
     "pineapple-styles": "^1.1.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
   },

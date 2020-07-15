@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homefone">
+  <v-container fluid class="homefone" v-if="ready">
     <v-card flat class="transparent mx-auto mt-12 mb-0 text-center" max-width="1360">
       <v-card-text class="text-center" max-width="940">
         <h2 style="width: 100%; text-align: center">{{ testimonials.header }}</h2>
