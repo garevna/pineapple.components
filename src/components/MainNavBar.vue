@@ -1,5 +1,5 @@
 <template>
-<v-container>
+<v-container fluid class="main-nav-bar-container">
   <!-- Viewport width less then lg -->
   <v-expansion-panels
           tile
@@ -15,6 +15,7 @@
                     hide-actions
                     height="70"
           >
+            <div></div>
             <v-spacer></v-spacer>
             <v-btn text class="burger-menu" height="48" width="48">
               <span :class="burgerMenuClassFirst"></span>
@@ -36,21 +37,20 @@
   </v-expansion-panels>
 
   <!-- Viewport width wider or equal lg -->
-    <v-app-bar
-            app
-            fixed
-            height="80"
-            flat
-            class="homefone app-bar d-none d-lg-block"
-    >
-        <v-row align="center" justify="center">
-          <v-spacer></v-spacer>
+  <v-app-bar
+          app
+          fixed
+          height="80"
+          flat
+          class="homefone app-bar d-none d-lg-block"
+  >
+    <v-row align="center" justify="end">
       <v-btn-toggle
-            group
-            flat
-            class="mr-10 d-none d-lg-flex"
-            color="transparent"
-            v-model="toggle"
+              group
+              flat
+              class="right-buttons d-none d-lg-flex"
+              color="transparent"
+              v-model="toggle"
       >
         <v-btn text
                v-for="(page, index) in mainNavButtons"
@@ -70,6 +70,9 @@
 .v-btn-toggle > .v-btn.v-btn--active {
   color: #72BF44!important;
 }
+.right-buttons {
+  margin-right: 48px!important;
+}
 .app-bar-icon {
   display: inline-block;
   width: 10px;
@@ -86,10 +89,6 @@
 .app-bar-menu-bordered {
   border: solid 2px #51AD30!important;
   border-radius: 100px!important;
-}
-.system-bar-phone {
-  font-size: 16px;
-  color: #ffffff;
 }
 .burger-menu {
   height: 48px;
@@ -130,6 +129,12 @@
 .main-menu-items {
   font-size: 18px;
   line-height: 40px;
+}
+
+@media screen and (min-width: 2000px) {
+  .right-buttons {
+    margin-right: 10% !important;
+  }
 }
 </style>
 

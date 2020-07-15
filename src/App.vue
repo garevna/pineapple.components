@@ -127,17 +127,21 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      getGeneralInfo: 'GET_GENERAL_INFO'
+    }),
     ...mapActions('content', {
-      getContent: 'GET_CONTENT'
+      getPageContent: 'GET_PAGE_CONTENT'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
   },
   beforeMount () {
-    this.getContent()
+    this.getGeneralInfo()
+    this.getPageContent(3)
       .then((response) => {
-        document.title = this.browserTabTitle
+        document.title = response
         this.ready = true
       })
   },
