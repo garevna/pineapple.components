@@ -1,32 +1,35 @@
 {
   "name": "pineapple-system-bar",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "Component for npm registry",
-  "keywords": ["pineapple", "npm", "registry", "system-bar"],
-  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "keywords": [
+    "pineapple",
+    "npm",
+    "registry",
+    "system-bar"
+  ],
+  "author": "garevna <irina.h.fylyppova@gmail.com>",
   "repository": "https://github.com/garevna/pineapple.components/tree/system-bar",
   "main": "./dist/pineapple-system-bar.common.js",
   "files": [
     "dist/*",
-    "css/*"
+    "README.md"
   ],
   "scripts": {
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "css-watch": "npm run css-build -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "popups": "vue-cli-service build --target lib --name pineapple-popups ./src/components/popups-index.js",
-    "footer": "vue-cli-service build --target lib --name pineapple-footer ./src/components/footer-index.js",
     "system-bar": "vue-cli-service build --target lib --name pineapple-system-bar ./src/components/system-bar-index.js",
-    "testimonials": "vue-cli-service build --target lib --name pineapple-testimonials ./src/components/testimonials-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "pineapple-styles": "^1.1.0",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11",
-    "vuex": "^3.4.0"
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
