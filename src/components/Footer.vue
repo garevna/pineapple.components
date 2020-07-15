@@ -3,7 +3,11 @@
     <v-row style="position: relative; bottom: 0">
       <FooterFone :footerHeight="footerHeight" style="position: absolute; top: 0; left: 0; width: 100%" />
       <v-row align="start" justify="center" style="position: absolute; top: 8%; left: 0; width: 100%">
-        <FooterForm :emailEndpoint="emailEndpoint" />
+        <FooterForm
+              :emailEndpoint="emailEndpoint"
+              :emailSubject="emailSubject"
+              :emailText="emailText"
+        />
       </v-row>
       <v-row style="position: absolute; top: 500px; left: 0; width: 100%" v-if="viewportWidth >= 600">
         <FooterBottomContent />
@@ -49,9 +53,9 @@ export default {
     FooterBottomContentSmall,
     FooterBottomContent
   },
-  props: ['page', 'emailEndpoint'],
+  props: ['emailEndpoint'],
   computed: {
-    ...mapState(['viewportWidth']),
+    ...mapState(['viewportWidth', 'emailSubject', 'emailText']),
     topContentFont () {
       return this.viewportWidth < 420 ? '80px' : this.viewportWidth > 1904 ? '288px' : '198px'
     },

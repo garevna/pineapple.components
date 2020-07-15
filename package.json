@@ -1,8 +1,8 @@
 {
   "name": "pineapple-footer",
-  "version": "2.0.9",
+  "version": "2.1.0",
   "description": "Component for npm registry",
-  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
     "pineapple",
     "component",
@@ -14,7 +14,6 @@
   "main": "./dist/pineapple-footer.common.js",
   "files": [
     "dist/*",
-    "css/*",
     "README.md"
   ],
   "scripts": {

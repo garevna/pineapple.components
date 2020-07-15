@@ -1,17 +1,16 @@
 <template>
-<v-row justify="center">
   <v-dialog
         v-model="dialog"
         dark
         persistent
-        max-width="300px"
+        width="320"
+        class="mx-0 text-center"
   >
-    <v-card class="deepgreen pa-4 pt-8">
-      <v-row class="mx-auto">
-        <v-col cols="12" class="mx-auto">
+    <v-card width="100%" class="deepgreen text-center mx-auto pa-4 pt-8">
+      <v-card flat width="100%" class="transparent text-center mx-auto my-4">
               <v-text-field
                     height="53"
-                    class="input-field input-field-rounded transparent"
+                    class="input-field-rounded transparent"
                     label="Name"
                     hide-details
                     outlined
@@ -20,13 +19,11 @@
                     v-model="__name"
                     :rules="[rules.required]"
               ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row class="mx-auto">
-        <v-col cols="12" class="mx-auto">
+      </v-card>
+      <v-card flat width="100%" class="transparent text-center mx-auto my-4">
               <v-text-field
                     height="53"
-                    class="input-field input-field-rounded transparent"
+                    class="input-field-rounded transparent"
                     label="Email"
                     hide-details
                     outlined
@@ -35,13 +32,11 @@
                     v-model="__email"
                     :rules="[rules.required, rules.email]"
               ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row class="mx-auto">
-        <v-col cols="12" class="mx-auto">
+      </v-card>
+      <v-card flat width="100%" class="transparent text-center mx-auto my-4">
               <v-text-field
                     height="53"
-                    class="input-field input-field-rounded transparent"
+                    class="input-field-rounded transparent"
                     label="Phone"
                     hide-details
                     outlined
@@ -51,15 +46,12 @@
                     style="font-size: 16px"
                     background-color="transparent"
               ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row class="mx-auto">
-        <v-col cols="12" class="mx-auto">
+      </v-card>
+      <v-card flat width="100%" class="transparent text-center mx-auto my-4">
               <v-btn
                   height="53"
                   class="mx-auto"
-                  max-width="240"
-                  min-width="240"
+                  width="100%"
                   dense
                   hide-details
                   rounded
@@ -67,12 +59,10 @@
                   @click="submit"
                   style="color: #20731C"
               >Get started</v-btn>
-        </v-col>
-      </v-row>
+      </v-card>
       <Popup :opened.sync="popupOpened" :type="popupType" />
     </v-card>
   </v-dialog>
-</v-row>
 </template>
 
 <style scoped>
@@ -82,23 +72,13 @@
 
 .input-field-rounded {
   border-radius: 48px!important;
-}
-.input-field {
-  width: 280px;
-}
-
-.centered {
-  text-align: center;
-}
-
-.white-text {
-  color: #fff;
+  width: 100%;
 }
 </style>
 
 <script>
 
-import { VDialog, VCard, VRow, VCol, VTextField, VBtn } from 'vuetify/lib'
+import { VDialog, VCard, VTextField, VBtn } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
@@ -107,8 +87,6 @@ export default {
   components: {
     VDialog,
     VCard,
-    VRow,
-    VCol,
     VTextField,
     VBtn
   },

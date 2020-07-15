@@ -26,28 +26,27 @@ export default {
     popupEmailDisabled: false
   }),
   computed: {
-    ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer']),
-    ...mapState('contact', ['mailEndpoint'])
+    ...mapState(['viewportWidth', 'mailEndpoint', 'emailSubject', 'emailText']),
+    ...mapState('content', ['browserTabTitle', 'footer'])
   },
   methods: {
-    ...mapActions('content', {
-      getContent: 'GET_CONTENT'
+    ...mapActions({
+      getGeneralInfo: 'GET_GENERAL_INFO'
     }),
-    ...mapActions('testimonials', {
-      getTestimonials: 'GET_CONTENT'
+    ...mapActions('content', {
+      getPageContent: 'GET_PAGE_CONTENT'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
   },
   beforeMount () {
-    this.getContent()
+    this.getGeneralInfo()
+    this.getPageContent(3)
       .then((response) => {
-        document.title = this.browserTabTitle
+        document.title = response
         this.ready = true
       })
-    this.getTestimonials()
   },
   mounted () {
     this.onResize()

@@ -121,7 +121,7 @@ export default {
     VBtn,
     FooterFormSmall
   },
-  props: ['emailEndpoint'],
+  props: ['emailEndpoint', 'emailSubject', 'emailText'],
   data () {
     return {
       name: '',
@@ -140,7 +140,7 @@ export default {
   },
   computed: {
     ...mapState(['viewportWidth']),
-    ...mapState('content', ['footer', 'emailSubject', 'emailText']),
+    ...mapState('content', ['footer']),
     topContentTop () {
       return this.viewportWidth < 420 ? '80px' : this.viewportWidth > 1904 ? '288px' : '198px'
     },
@@ -206,10 +206,10 @@ export default {
       }
 
       const response = this.sendEmail({
-        subject: this.mailSubject,
+        subject: this.emailSubject,
         email: this.email,
         message: `
-          <p>${this.mailText}</p>
+          <p>${this.emailText}</p>
           <fieldset>
             <legend>Details</legend>
             <h3>Name: ${this.name}</h3>
