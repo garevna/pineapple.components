@@ -3,7 +3,6 @@
           flat
           width="100%"
           class="transparent my-10"
-          v-if="internetPlans"
   >
     <v-card-text class="text-center">
       <h2 v-html="header"></h2>
@@ -24,7 +23,7 @@
               v-if="ready"
       >
         <PriceCard class="d-none d-md-block"
-                  v-for="(item, index) in plans[plan]"
+                  v-for="(item, index) in currentPlan"
                   :key="index"
                   :item="item"
                   :index="index"
@@ -38,7 +37,7 @@
           class="d-block d-md-none"
         >
           <v-carousel-item
-            v-for="(item, index) in plans[plan]"
+            v-for="(item, index) in currentPlan"
             :key="index"
           >
             <v-sheet
@@ -107,7 +106,6 @@ export default {
   props: ['page'],
   data () {
     return {
-      ready: false,
       contact: false,
       selected: null,
       endpoint: 'https://api.pineapple.net.au/content/plans',
@@ -119,6 +117,9 @@ export default {
     ...mapState('content', {
       internetPlans: 'plans'
     }),
+    currentPlan () {
+      return this.plans && this.plan ? this.plans[this.plan] : {}
+    },
     header () {
       return !!this.internetPlans && !!this.internetPlans.header
         ? this.internetPlans.header
@@ -135,20 +136,19 @@ export default {
     },
     carouselHeight () {
       return this.viewportWidth < 960 ? this.viewportWidth < 600 ? 420 : 480 : 420
+    },
+    ready () {
+      return this.plan && this.plans
     }
   },
   methods: {
     async getPrices () {
       const { plans } = await (await fetch(this.endpoint)).json()
       this.plans = plans
-      this.ready = true
     }
   },
   beforeMount () {
     this.getPrices()
-  },
-  mounted () {
-    console.log('Internet Plans:\n', this.internetPlans)
   }
 }
 </script>
