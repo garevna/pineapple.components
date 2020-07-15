@@ -3,7 +3,7 @@
     <v-card-text class="text-center">
       <h4>{{ userForm.title }}</h4>
     </v-card-text>
-    <v-card-text class="mx-0 px-0" width="100%" v-if="ready">
+    <v-card-text class="mx-0 px-0" width="100%" v-if="fields">
       <div v-for="(field, index) in fields" :key="index">
         <InputWithValidation
               :field="field"
@@ -151,7 +151,7 @@ export default {
         message: val => val.length >= 5
       },
       ready: false,
-      fields: [],
+      fields: null,
       popupOpened: false,
       popupType: null,
       progress: false
@@ -253,6 +253,12 @@ export default {
       this.popupType = await this.sendEmail(emailField.value) ? 'success' : 'error'
       this.progress = false
       this.popupOpened = true
+    }
+  },
+  mounted () {
+    if (this.userForm) {
+      this.setFieldsToShow(this.userForm.fieldsToShow)
+      this.ready = true
     }
   }
 }
