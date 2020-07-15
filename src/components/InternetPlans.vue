@@ -3,7 +3,7 @@
           flat
           width="100%"
           class="transparent my-10"
-          v-if="plans"
+          v-if="internetPlans"
   >
     <v-card-text class="text-center">
       <h2 v-html="header"></h2>
@@ -17,10 +17,11 @@
       <SwitchMode />
     </v-card-text>
 
-    <v-slide-x-transition leave-absolute>
+    <!-- <v-slide-x-transition> -->
       <v-card
               flat
               class="d-flex flex-wrap justify-center transparent"
+              v-if="ready"
       >
         <PriceCard class="d-none d-md-block"
                   v-for="(item, index) in plans[plan]"
@@ -62,7 +63,7 @@
           </v-carousel-item>
         </v-carousel>
       </v-card>
-    </v-slide-x-transition>
+    <!-- </v-slide-x-transition> -->
     <v-card-actions class="text-center my-4 mb-md-8">
       <v-btn
           dark
@@ -81,7 +82,9 @@
 
 <script>
 
-import { VCard, VCardText, VCarousel, VCarouselItem, VRow, VSheet, VSlideXTransition, VBtn } from 'vuetify/lib'
+/* VSlideXTransition, */
+
+import { VCard, VCardText, VCarousel, VCarouselItem, VRow, VSheet, VBtn } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
@@ -97,7 +100,6 @@ export default {
     VCarouselItem,
     VRow,
     VSheet,
-    VSlideXTransition,
     VBtn,
     PriceCard,
     SwitchMode
@@ -105,21 +107,11 @@ export default {
   props: ['page'],
   data () {
     return {
+      ready: false,
       contact: false,
       selected: null,
-      plans: {
-        residential: [
-          { upload: 50, download: 50, price: 49.99, selected: false },
-          { upload: 150, download: 150, price: 69, selected: false },
-          { upload: 500, download: 500, price: 140, selected: false },
-          { upload: 1000, download: 1000, price: 250, selected: false }
-        ],
-        business: [
-          { upload: 150, download: 150, price: 150, selected: false },
-          { upload: 500, download: 500, price: 240, selected: false },
-          { upload: 1000, download: 1000, price: 500, selected: false }
-        ]
-      }
+      endpoint: 'https://api.pineapple.net.au/content/plans',
+      plans: null
     }
   },
   computed: {
@@ -144,6 +136,19 @@ export default {
     carouselHeight () {
       return this.viewportWidth < 960 ? this.viewportWidth < 600 ? 420 : 480 : 420
     }
+  },
+  methods: {
+    async getPrices () {
+      const { plans } = await (await fetch(this.endpoint)).json()
+      this.plans = plans
+      this.ready = true
+    }
+  },
+  beforeMount () {
+    this.getPrices()
+  },
+  mounted () {
+    console.log('Internet Plans:\n', this.internetPlans)
   }
 }
 </script>

@@ -1,6 +1,6 @@
 {
   "name": "pineapple-internet-plans",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Component for npm registry",
   "author": "garevna<irina.h.fylyppova@gmail.com>",
   "keywords": [
@@ -15,7 +15,6 @@
   "main": "./dist/pineapple-internet-plans.common.js",
   "files": [
     "dist/*",
-    "css/*",
     "README.md"
   ],
   "scripts": {
@@ -30,7 +29,6 @@
     "core-js": "^3.6.5",
     "pineapple-styles": "^1.1.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
   },
