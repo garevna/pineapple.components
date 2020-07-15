@@ -3,7 +3,7 @@
     <v-card-text class="text-center">
       <h4>{{ userForm.title }}</h4>
     </v-card-text>
-    <v-card-text class="mx-0 px-0" width="100%" v-if="fields">
+    <v-card-text class="mx-0 px-0" width="100%" v-if="ready">
       <div v-for="(field, index) in fields" :key="index">
         <InputWithValidation
               :field="field"
@@ -164,6 +164,7 @@ export default {
         this.ready = !!val
         if (!val) return
         this.setFieldsToShow(val.fieldsToShow)
+        this.ready = true
       }
     }
   },
@@ -176,7 +177,7 @@ export default {
           type: this.fieldTypes[field.type],
           placeholder: field.placeholder,
           required: field.required,
-          value: field.placeholder || '',
+          value: '',
           validator: this.validators[field.type],
           error: false,
           available: field.type === 'state' ? ['VIC', 'NSW', 'ACT', 'QLD', 'SA', 'WA', 'TAS', 'NT'] : field.available || null
@@ -253,9 +254,6 @@ export default {
       this.progress = false
       this.popupOpened = true
     }
-  },
-  mounted () {
-    this.setFieldsToShow(this.userForm.fieldsToShow)
   }
 }
 

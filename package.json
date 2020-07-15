@@ -1,6 +1,6 @@
 {
   "name": "pineapple-contact-form",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Component for npm registry",
   "keywords": [
     "pineapple",
@@ -10,12 +10,11 @@
     "contact",
     "form"
   ],
-  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "author": "garevna <irina.h.fylyppova@gmail.com>",
   "repository": "https://github.com/garevna/pineapple.components/tree/contact-form",
   "main": "./dist/pineapple-contact-form.common.js",
   "files": [
     "dist/*",
-    "css/*",
     "README.md"
   ],
   "scripts": {
@@ -23,10 +22,6 @@
     "css-watch": "npm run css-build -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "popups": "vue-cli-service build --target lib --name pineapple-popups ./src/components/popups-index.js",
-    "footer": "vue-cli-service build --target lib --name pineapple-footer ./src/components/footer-index.js",
-    "system-bar": "vue-cli-service build --target lib --name pineapple-system-bar ./src/components/system-bar-index.js",
-    "testimonials": "vue-cli-service build --target lib --name pineapple-testimonials ./src/components/testimonials-index.js",
     "contact-form": "vue-cli-service build --target lib --name pineapple-contact-form ./src/components/contact-form-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"

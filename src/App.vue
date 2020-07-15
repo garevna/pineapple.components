@@ -34,22 +34,25 @@ export default {
     popupEmailDisabled: false
   }),
   computed: {
-    ...mapState(['viewportWidth']),
-    ...mapState('content', ['userForm']),
-    ...mapState('contact', ['emailSubject', 'emailText', 'mailEndpoint'])
+    ...mapState(['viewportWidth', 'emailSubject', 'emailText', 'mailEndpoint']),
+    ...mapState('content', ['userForm'])
   },
   methods: {
+    ...mapActions({
+      getGeneralInfo: 'GET_GENERAL_INFO'
+    }),
     ...mapActions('content', {
-      getContent: 'GET_CONTENT'
+      getPageContent: 'GET_PAGE_CONTENT'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
   },
   beforeMount () {
-    this.getContent()
+    this.getGeneralInfo()
+    this.getPageContent(1)
       .then((response) => {
-        document.title = this.browserTabTitle
+        document.title = response
         this.ready = true
       })
   },
