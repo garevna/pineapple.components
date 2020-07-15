@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height class="homefone" >
+  <v-container fluid fill-height class="homefone">
     <v-row style="position: relative; bottom: 0">
       <FooterFone :footerHeight="footerHeight" style="position: absolute; top: 0; left: 0; width: 100%" />
       <v-row align="start" justify="center" style="position: absolute; top: 8%; left: 0; width: 100%">

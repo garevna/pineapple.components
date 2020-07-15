@@ -10,6 +10,7 @@ import { mapState, mapActions } from 'vuex'
 
 import 'pineapple-styles'
 import 'pineapple-popup'
+import 'pineapple-popup/dist/pineapple-popup.css'
 
 import Footer from './components/Footer.vue'
 
@@ -21,9 +22,7 @@ export default {
   },
 
   data: () => ({
-    popupOpened: false,
-    popupErrorOpened: false,
-    popupEmailDisabled: false
+    //
   }),
   computed: {
     ...mapState(['viewportWidth', 'mailEndpoint', 'emailSubject', 'emailText']),
