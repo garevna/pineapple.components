@@ -22,22 +22,3 @@ import 'pineapple-how-to-connect/dist/pineapple-how-to-connect.css'
 ```
 <HowToConnect :page.sync="page" />
 ```
-
-_____________________________
-
-#### You can add the global styles and fonts to the project from this package
-
-If you don't want to add pineapple-styles from npm registry you can install the fonts and variables of pineapple.net.au projects so:
-
-###### main.js
-```
-import 'pineapple-how-to-connect/css/fonts.scss'
-import 'pineapple-how-to-connect/css/variables.scss'
-```
-
-You can install global styles of pineapple.net.au projects so:
-
-###### App.vue
-```
-import 'pineapple-how-to-connect/css/main.css'
-```

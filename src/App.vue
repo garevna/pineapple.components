@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <SystemBar />
     <HowToConnect :page.sync="page" />
-    <Footer />
   </v-app>
 </template>
 
@@ -11,18 +9,6 @@
 import { mapState, mapActions } from 'vuex'
 
 import 'pineapple-styles'
-
-/* SystemBar */
-import 'pineapple-system-bar'
-import 'pineapple-system-bar/dist/pineapple-system-bar.css'
-
-/* Popup */
-import 'pineapple-popup'
-import 'pineapple-popup/dist/pineapple-popup.css'
-
-/* Footer */
-import 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
 
 import HowToConnect from '@/components/HowToConnect.vue'
 
@@ -39,27 +25,26 @@ export default {
     popupEmailDisabled: false
   }),
   computed: {
-    ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer'])
+    ...mapState(['viewportWidth'])
   },
   methods: {
-    ...mapActions('content', {
-      getContent: 'GET_CONTENT'
+    ...mapActions({
+      getGeneralInfo: 'GET_GENERAL_INFO'
     }),
-    ...mapActions('testimonials', {
-      getTestimonials: 'GET_CONTENT'
+    ...mapActions('content', {
+      getPageContent: 'GET_PAGE_CONTENT'
     }),
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
   },
   beforeMount () {
-    this.getContent(5)
+    this.getGeneralInfo()
+    this.getPageContent(3)
       .then((response) => {
-        document.title = this.browserTabTitle
+        document.title = response
         this.ready = true
       })
-    this.getTestimonials()
   },
   mounted () {
     this.onResize()

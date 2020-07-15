@@ -13,12 +13,17 @@
       <v-card flat class="d-flex flex-wrap justify-center transparent">
         <v-card
               flat
-              class="card--offer transparent text-center mx-1 mx-sm-10"
+              class="transparent text-center mx-auto"
               width="240"
               v-for="(item, index) in howToConnect.items"
               :key="index"
         >
-          <v-img :src="item.icon" />
+          <v-img
+                :src="item.icon"
+                max-width="200"
+                min-with="150"
+                class="mx-auto"
+          />
           <v-card-text class="text-center">
             <h3 v-html="item.title.split('\n').join('<br>')"></h3>
           </v-card-text>
@@ -47,12 +52,10 @@ h3, p {
   text-align: center;
   color: #000;
 }
-.card--offer {
-  width: 240px;
-}
-@media (max-width: 420px), (max-height: 420px) {
-  .card--offer {
-    width: 90%!important;
+
+@media screen and (max-width: 320px) {
+  .submit-button {
+    max-width: 300px!important;
   }
 }
 </style>
