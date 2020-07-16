@@ -48,7 +48,7 @@
       <v-btn-toggle
               group
               flat
-              class="right-buttons d-none d-lg-flex"
+              class="mr-10 d-none d-lg-flex"
               color="transparent"
               v-model="toggle"
       >
@@ -69,9 +69,6 @@
 <style scoped>
 .v-btn-toggle > .v-btn.v-btn--active {
   color: #72BF44!important;
-}
-.right-buttons {
-  margin-right: 48px!important;
 }
 .app-bar-icon {
   display: inline-block;
@@ -129,12 +126,6 @@
 .main-menu-items {
   font-size: 18px;
   line-height: 40px;
-}
-
-@media screen and (min-width: 2000px) {
-  .right-buttons {
-    margin-right: 10% !important;
-  }
 }
 </style>
 
