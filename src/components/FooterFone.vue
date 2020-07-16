@@ -74,7 +74,7 @@
     </figure>
 
     <figure
-          class="footer footer--large"
+          class="footer footer--large homefone"
           v-if="viewportWidth > 1440"
           :style="{ position: 'absolute', top: '0', left: '0', height: footerLargeHeight, width: '110%' }"
     >
@@ -90,7 +90,7 @@
     </figure>
 
     <figure
-          class="footer footer--small"
+          class="footer footer--small homefone"
           v-if="viewportWidth <= 420"
           style="position: absolute; top: 0; left: 0; width: 105%"
     >
@@ -112,6 +112,9 @@ svg.defs-only {
   padding: 0;
   border: none;
   overflow: hidden;
+}
+.homefone {
+  background: #FAFAFA;
 }
 </style>
 

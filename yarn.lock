@@ -7802,10 +7802,10 @@ pineapple-popup@^1.0.7:
     vuetify "^2.2.11"
     vuex "^3.4.0"
 
-pineapple-styles@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/pineapple-styles/-/pineapple-styles-1.1.0.tgz#ec5e51d19b67280d1e261cbac98f8d67962755db"
-  integrity sha512-KFAS9bSVruAtN4WgEOcnC9d5F50+k4iA1iJxt/3YlaGro536GJqODt7R1Rc40iqyH2p8JhkmMExSCeFWVa5nng==
+pineapple-styles@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/pineapple-styles/-/pineapple-styles-1.1.7.tgz#ccef0a7dd6ef138040d5515d06831ff34b1442d6"
+  integrity sha512-SgbZsK4slO1DdtA9N6gPyp0iHM2S04PhTQqc4srLXH0n0zI08w6ak0ZWu/7sHyJI7GUV7konYuqH7IXZVCJViA==
   dependencies:
     core-js "^3.6.5"
     vue "^2.6.11"
