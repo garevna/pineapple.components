@@ -1,8 +1,8 @@
 {
   "name": "pineapple-styles",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "description": "Component for npm registry",
-  "author": "garevna<irina.h.fylyppova@gmail.com>",
+  "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": ["pineapple", "npm", "registry", "styles", "css"],
   "repository": "https://github.com/garevna/pineapple.components/tree/styles",
   "main": "./css/main.css",
