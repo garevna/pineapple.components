@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="pineapple-footer-fone">
+  <v-container fluid id="homefone pineapple-footer-fone">
     <svg class="defs-only" width="1462" height="948" viewBox="0 0 1462 948" fill="none">
       <symbol id="footer-background">
         <path d="M0 89.9995C293 -87.0005 420.5 63.0006 682.5 64.0006C944.5 65.0006 1151.5 -43.5001 1440 21.0007V539C1230 581.998 1003 583.746 817.5 564C558.859 536.47 347 454.001 0 505.001V89.9995Z" fill="#94C578"></path>
