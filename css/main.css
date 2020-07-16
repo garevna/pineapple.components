@@ -5,6 +5,10 @@ html, body {
   overflow-x: hidden;
 }
 
+.home--fone {
+  background: #FAFAFA;
+}
+
 .v-application,
 .v-application--wrap,
 .v-application * {
