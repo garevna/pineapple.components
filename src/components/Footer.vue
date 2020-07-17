@@ -62,6 +62,9 @@ export default {
     footerHeight () {
       return this.viewportWidth < 420 ? 680 : this.viewportWidth > 1904 ? 980 : 860
     }
+  },
+  mounted () {
+    this.$store.commit('UPDATE_FOOTER_HEIGHT', this.footerHeight)
   }
 }
 </script>
