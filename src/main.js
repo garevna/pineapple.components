@@ -5,8 +5,8 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 
-import './css/fonts.scss'
-import './css/variables.scss'
+import 'pineapple-styles/css/fonts.scss'
+import 'pineapple-styles/css/variables.scss'
 
 Vue.config.productionTip = false
 
