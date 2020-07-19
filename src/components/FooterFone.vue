@@ -103,7 +103,7 @@
 </template>
 
 <style>
-svg.defs-only {
+/* svg.defs-only {
   display: block;
   position: absolute;
   height: 0;
@@ -112,6 +112,13 @@ svg.defs-only {
   padding: 0;
   border: none;
   overflow: hidden;
+} */
+
+html {
+  overflow: hidden;
+}
+body {
+  overflow-y: scroll;
 }
 
 </style>
@@ -120,6 +127,10 @@ svg.defs-only {
 
 .container--fluid {
   padding: 0;
+}
+
+.footer {
+  height: fit-content;
 }
 
 .footer, .footer--small {

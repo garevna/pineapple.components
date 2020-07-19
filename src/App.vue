@@ -4,6 +4,16 @@
   </v-app>
 </template>
 
+<style>
+  .section {
+    width: 100%;
+    max-width: 1440px;
+  }
+  body {
+    overflow: hidden;
+  }
+</style>
+
 <script>
 
 import { mapState, mapActions } from 'vuex'
