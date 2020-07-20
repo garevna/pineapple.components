@@ -1,36 +1,38 @@
 <template>
-  <v-container fluid fill-height class="homefone">
+  <v-container
+          fluid
+          class="homefone"
+          id="footer-container"
+  >
     <v-row style="position: relative; bottom: 0">
-      <FooterFone :footerHeight="footerHeight" style="position: absolute; top: 0; left: 0; width: 100%" />
-      <v-row align="start" justify="center" style="position: absolute; top: 8%; left: 0; width: 100%">
+      <FooterFone
+              :height="figureHeight + 'px'"
+              style="position: absolute; top: 0; left: 0; width: 100%"
+      />
+      <v-row align="start" justify="center" :style="{ position: 'absolute', top: top, left: '0', width: '100%' }">
         <FooterForm
               :emailEndpoint="emailEndpoint"
               :emailSubject="emailSubject"
               :emailText="emailText"
         />
       </v-row>
-      <v-row style="position: absolute; top: 500px; left: 0; width: 100%" v-if="viewportWidth >= 600">
+
+      <v-row
+              :style="{ position: 'absolute', top: bottomContent, left: '0', width: '100%' }"
+              v-if="viewportWidth >= 640"
+      >
         <FooterBottomContent />
       </v-row>
-      <v-row style="position: absolute; bottom: -850px; left: 0; width: 100%" v-if="viewportWidth < 600 && viewportWidth >= 420">
-        <FooterBottomContentSmall class="footer--bottom-content-small"/>
-      </v-row>
-      <v-row style="position: absolute; bottom: -550px; left: 0; width: 100%" v-if="viewportWidth < 420">
-        <FooterBottomContentSmall class="footer--bottom-content-small"/>
+
+      <v-row
+              :style="{ position: 'absolute', top: bottomContentSmall, left: '0', width: '100%' }"
+              v-if="viewportWidth < 640"
+      >
+        <FooterBottomContentSmall class="footer--bottom-content-small" />
       </v-row>
     </v-row>
   </v-container>
 </template>
-
-<style scoped>
-
-.footer--bottom-content-small {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-}
-
-</style>
 
 <script>
 
@@ -53,18 +55,42 @@ export default {
     FooterBottomContentSmall,
     FooterBottomContent
   },
-  props: ['emailEndpoint'],
-  computed: {
-    ...mapState(['viewportWidth', 'emailSubject', 'emailText']),
-    topContentFont () {
-      return this.viewportWidth < 420 ? '80px' : this.viewportWidth > 1904 ? '288px' : '198px'
-    },
-    footerHeight () {
-      return this.viewportWidth < 420 ? 680 : this.viewportWidth > 1904 ? 980 : 860
+  props: ['emailEndpoint', 'height'],
+  data () {
+    return {
+      footerHeight: 0
     }
   },
-  mounted () {
-    this.$store.commit('UPDATE_FOOTER_HEIGHT', this.footerHeight)
+  computed: {
+    ...mapState(['viewportWidth', 'emailSubject', 'emailText']),
+
+    top () {
+      const top = this.viewportWidth < 360 ? 64
+        : this.viewportWidth < 608 ? 140
+          : this.viewportWidth < 900 ? 128
+            : this.viewportWidth < 1440 ? 160
+              : this.viewportWidth < 1904 ? 180 : 420
+      return top + 'px'
+    },
+
+    bottomContent () {
+      const top = this.viewportWidth <= 1440 ? 440
+        : this.viewportWidth <= 1904 ? 480 : 680
+      return top + 'px'
+    },
+
+    bottomContentSmall () {
+      const top = this.viewportWidth < 430 ? 380 : 640
+      return top + 'px'
+    },
+
+    figureHeight () {
+      const height = this.viewportWidth < 430 ? 560
+        : this.viewportWidth <= 1440 ? 860
+          : this.viewportWidth <= 1904 ? 1060 : 1300
+      this.$store.commit('UPDATE_FOOTER_HEIGHT', height)
+      return height
+    }
   }
 }
 </script>

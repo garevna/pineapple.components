@@ -1,5 +1,5 @@
 <template>
-  <v-card flat class="transparent footer--top-content" :style="{ top: topContentTop }" v-if="footer">
+  <v-card flat class="transparent footer--top-content" :style="{ top: top }" v-if="footer">
     <v-card-text class="text-center">
       <h2 class="white-text centered">{{ header }}</h2>
       <h5 class="white-text centered mt-8">
@@ -9,7 +9,7 @@
     <v-row class="mx-auto">
       <v-col cols="12" class="mx-auto">
         <v-row align="center" justify="center">
-          <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth > 420">
+          <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth >= 430">
             <v-text-field
                   height="53"
                   class="input-field input-field-rounded transparent"
@@ -22,7 +22,7 @@
                   :rules="[rules.required]"
             ></v-text-field>
           </v-card>
-          <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth > 420">
+          <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth >= 430">
             <v-text-field
                   height="53"
                   class="input-field input-field-rounded transparent"
@@ -35,7 +35,7 @@
                   :rules="[rules.required, rules.email]"
             ></v-text-field>
           </v-card>
-          <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth > 420">
+          <v-card flat class="transparent mx-1 my-1" v-if="viewportWidth >= 430">
             <v-text-field
                   height="53"
                   class="input-field input-field-rounded transparent"
@@ -121,7 +121,7 @@ export default {
     VBtn,
     FooterFormSmall
   },
-  props: ['emailEndpoint', 'emailSubject', 'emailText'],
+  props: ['emailEndpoint', 'emailSubject', 'emailText', 'top'],
   data () {
     return {
       name: '',
@@ -141,9 +141,6 @@ export default {
   computed: {
     ...mapState(['viewportWidth']),
     ...mapState('content', ['footer']),
-    topContentTop () {
-      return this.viewportWidth < 420 ? '80px' : this.viewportWidth > 1904 ? '288px' : '198px'
-    },
     header () {
       return this.footer && this.footer.topHead ? this.footer.topHead : 'READY TO GET STARTED?'
     },

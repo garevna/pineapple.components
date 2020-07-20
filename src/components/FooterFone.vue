@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="homefone pineapple-footer-fone">
+  <v-container fluid class="homefone" id="pineapple-footer-fone" :style="{ height: height }">
     <svg class="defs-only" width="1462" height="948" viewBox="0 0 1462 948" fill="none">
       <symbol id="footer-background">
         <path d="M0 89.9995C293 -87.0005 420.5 63.0006 682.5 64.0006C944.5 65.0006 1151.5 -43.5001 1440 21.0007V539C1230 581.998 1003 583.746 817.5 564C558.859 536.47 347 454.001 0 505.001V89.9995Z" fill="#94C578"></path>
@@ -66,7 +66,7 @@
     <figure
             class="footer footer-normal home--fone"
             v-if="viewportWidth > 420 && viewportWidth <= 1440"
-            :style="{ position: 'absolute', top: '0', left: '0', height: footerNormalHeight, width: '105%' }"
+            :style="{ height: height + '!important', width: '105%' }"
     >
       <svg width="100%" height="100%">
           <use xlink:href="#footer-background"></use>
@@ -76,7 +76,7 @@
     <figure
           class="footer footer--large home--fone"
           v-if="viewportWidth > 1440"
-          :style="{ position: 'absolute', top: '0', left: '0', height: footerLargeHeight, width: '110%' }"
+          :style="{ height: height + '!important' }"
     >
       <div id="svg-container">
         <svg viewBox="0 0 1462 948"
@@ -91,8 +91,8 @@
 
     <figure
           class="footer footer--small home--fone"
-          v-if="viewportWidth <= 420"
-          style="position: absolute; top: 0; left: 0; width: 105%"
+          v-if="viewportWidth < 421"
+          :style="{ height: height + '!important', width: '105%' }"
     >
       <svg :width="viewportWidth" height="860">
           <use xlink:href="#footer-background-small" style="transform: scale(1.05, 1.05)"></use>
@@ -102,47 +102,12 @@
 
 </template>
 
-<style>
-/* svg.defs-only {
-  display: block;
-  position: absolute;
-  height: 0;
-  width: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
-  overflow: hidden;
-} */
-
-html {
-  overflow: hidden;
-}
-body {
-  overflow-y: scroll;
-}
-
-</style>
-
 <style scoped>
 
-.container--fluid {
-  padding: 0;
-}
-
-.footer {
-  height: fit-content;
-}
-
-.footer, .footer--small {
+/* .footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-}
-
-.footer {
-  left: 0;
-  bottom: 0;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -150,12 +115,14 @@ body {
   margin-bottom: -10px;
 }
 
-.footer--small {
-  height: 563px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+.footer--large, .footer-normal {
+  width: 110%;
 }
+
+.footer--small {
+  height: 560px!important;
+  width: 105%;
+} */
 
 </style>
 
@@ -170,16 +137,9 @@ export default {
   components: {
     VContainer
   },
-  props: {
-    footerHeight: Number
-  },
+  props: ['height'],
   computed: {
-    ...mapState(['viewportWidth']),
-    footerNormalHeight () { return `${this.footerHeight}px` || '948px' },
-    footerLargeHeight () {
-      const height = this.footerHeight || (948 * window.innerWidth / 1440)
-      return `${height}px`
-    }
+    ...mapState(['viewportWidth'])
   }
 }
 </script>

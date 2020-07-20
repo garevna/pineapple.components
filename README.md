@@ -47,3 +47,53 @@ import 'pineapple-footer/dist/pineapple-footer.css'
 ```
 <Footer :emailEndpoint="emailEndpoint" />
 ```
+
+#### Requirements
+
+##### store/index.js
+
+In the main vuex store file (`index.js`) you should add the _mutation_:
+
+```
+UPDATE_FOOTER_HEIGHT: (state, payload) => { state.footerHeight = payload }
+```
+and the property `footerHeight` to the state object
+
+##### App.vue
+
+First of all you should add the propery `mainContentHeight` to the data object
+
+Then in **App.vue** _computed_ property add the mapping of `footerHeight`:
+
+```
+...mapState(['viewportWidth', 'browserTabTitle', 'mailEndpoint', 'emailSubject', 'emailText', 'footerHeight'])
+```
+
+Then add the `mutationHandler` to the _methods_:
+```
+mutationHandler (mutations) {
+  this.mainContentHeight = this.$el.offsetHeight
+}
+```
+and modify the event handler `onResize` width one line of code:
+```
+onResize () {
+  this.$store.commit('CHANGE_VIEWPORT')
+  document.body.style.height = this.mainContentHeight + this.footerHeight + 'px'
+}
+```
+
+Now you need the watchers:
+
+```
+watch: {
+  mainContentHeight (val) {
+    document.body.style.height = val + this.footerHeight + 'px'
+  },
+  footerHeight (val) {
+    document.body.style.height = this.mainContentHeight + val + 'px'
+  }
+}
+```
+
+<sup>Full example you can see on the landing pages</sup>

@@ -14,17 +14,27 @@ export default new Vuex.Store({
     emailText: 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.',
     viewportWidth: window.innerWidth,
     viewportHeight: window.innerHeight,
-    plan: 'residential'
+    plan: 'residential',
+    mainContentHeight: 0,
+    footerHeight: 0
   },
 
   modules,
 
+  getters: {
+    pageHeight: (state) => state.mainContentHeight + state.footerHeight - 36
+  },
+
   mutations: {
+    UPDATE_MAIN_CONTENT_HEIGHT: (state, payload) => { state.mainContentHeight = payload },
+    UPDATE_FOOTER_HEIGHT: (state, payload) => { state.footerHeight = payload },
+
     UPDATE_EMAIL_SUBJECT: (state, payload) => { state.emailSubject = payload },
     UPDATE_EMAIL_TEXT: (state, payload) => { state.emailText = payload },
     CHANGE_VIEWPORT: (state) => {
       state.viewportWidth = window.innerWidth
       state.viewportHeight = window.innerHeight
+      return state.mainContentHeight + state.footerHeight + 'px'
     },
     CHANGE_PLAN: (state, plan) => { state.plan = plan },
 

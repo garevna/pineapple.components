@@ -1,17 +1,22 @@
 <template>
-  <v-app>
-    <Footer :emailEndpoint="mailEndpoint" />
+  <v-app v-mutate="mutationHandler">
+    <v-card class="mx-auto my-5 pa-auto" min-width="300" max-width="900" width="80%" height="300"><h1>1</h1></v-card>
+    <v-card class="mx-auto my-5 pa-auto" min-width="300" max-width="900" width="80%" height="300"><h1>2</h1></v-card>
+    <v-card class="mx-auto my-5 pa-auto" min-width="300" max-width="900" width="80%" height="300"><h1>3</h1></v-card>
+    <v-card class="mx-auto my-5 pa-auto" min-width="300" max-width="900" width="80%" height="300"><h1>4</h1></v-card>
+    <Footer
+            :emailEndpoint="mailEndpoint"
+            style="position: absolute; bottom: 0"
+    />
   </v-app>
 </template>
 
 <style>
-  .section {
-    width: 100%;
-    max-width: 1440px;
-  }
-  body {
-    overflow: hidden;
-  }
+
+body {
+  overflow-y: hidden !important;
+}
+
 </style>
 
 <script>
@@ -30,13 +35,14 @@ export default {
   components: {
     Footer
   },
-
-  data: () => ({
-    //
-  }),
+  data () {
+    return {
+      mainContentHeight: 0
+    }
+  },
   computed: {
-    ...mapState(['viewportWidth', 'mailEndpoint', 'emailSubject', 'emailText']),
-    ...mapState('content', ['browserTabTitle', 'footer'])
+    ...mapState(['viewportWidth', 'browserTabTitle', 'mailEndpoint', 'emailSubject', 'emailText', 'footerHeight']),
+    ...mapState('content', ['footer'])
   },
   methods: {
     ...mapActions({
@@ -45,8 +51,20 @@ export default {
     ...mapActions('content', {
       getPageContent: 'GET_PAGE_CONTENT'
     }),
+    mutationHandler (mutations) {
+      this.mainContentHeight = this.$el.offsetHeight
+    },
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
+      document.body.style.height = this.mainContentHeight + this.footerHeight + 'px'
+    }
+  },
+  watch: {
+    mainContentHeight (val) {
+      document.body.style.height = val + this.footerHeight + 'px'
+    },
+    footerHeight (val) {
+      document.body.style.height = this.mainContentHeight + val + 'px'
     }
   },
   beforeMount () {
@@ -59,6 +77,7 @@ export default {
   },
   mounted () {
     this.onResize()
+    console.log('MOUNTED - footer height: ', this.footerHeight)
     window.addEventListener('resize', this.onResize, { passive: true })
   },
   beforeDestroy () {
