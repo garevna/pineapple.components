@@ -1,17 +1,10 @@
 <template>
   <v-app>
-    <SystemBar />
-    <!-- <v-main app tag="main"> -->
-      <v-container fluid fill-height>
-        <v-btn @click="popupOpened = true">Success</v-btn>
-        <v-btn @click="popupErrorOpened = true">Error</v-btn>
-        <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
-      </v-container>
-      <PopupError :opened.sync="popupErrorOpened" />
-      <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-      <Popup :opened.sync="popupOpened" />
-    <!-- </v-main> -->
-    <Footer />
+    <v-container fluid fill-height class="homefone" v-if="ready" v-mutate="mutationHandler">
+      <SystemBar />
+      <FAQ />
+      <Footer />
+    </v-container>
   </v-app>
 </template>
 
@@ -19,52 +12,98 @@
 
 import { mapState, mapActions } from 'vuex'
 
-import '@/css/main.css'
+import 'pineapple-styles'
 
-import SystemBar from './components/SystemBar.vue'
-import Footer from './components/Footer.vue'
-import Popup from './components/Popup.vue'
-import PopupError from './components/PopupError.vue'
-import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
+/* SystemBar */
+import 'pineapple-system-bar'
+import 'pineapple-system-bar/dist/pineapple-system-bar.css'
+
+/* MainNavBar */
+import 'pineapple-main-nav-bar'
+import 'pineapple-main-nav-bar/dist/pineapple-main-nav-bar.css'
+
+/* HowToConnect */
+import 'pineapple-how-to-connect'
+import 'pineapple-how-to-connect/dist/pineapple-how-to-connect.css'
+
+/* Testimonials */
+import 'pineapple-testimonials'
+import 'pineapple-testimonials/dist/pineapple-testimonials.css'
+
+/* InternetPlans */
+import 'pineapple-internet-plans'
+import 'pineapple-internet-plans/dist/pineapple-internet-plans.css'
+
+/* Popup */
+import 'pineapple-popup'
+import 'pineapple-popup/dist/pineapple-popup.css'
+
+/* UserContact */
+import 'pineapple-contact-form'
+import 'pineapple-contact-form/dist/pineapple-contact-form.css'
+
+/* Footer */
+import 'pineapple-footer'
+import 'pineapple-footer/dist/pineapple-footer.css'
+
+import FAQ from '@/components/FAQ.vue'
 
 export default {
   name: 'App',
 
   components: {
-    SystemBar,
-    Popup,
-    PopupError,
-    PopupEmailDisabled,
-    Footer
+    FAQ
   },
 
   data: () => ({
-    popupOpened: false,
-    popupErrorOpened: false,
-    popupEmailDisabled: false
+    page: null,
+    plans: false,
+    ready: false,
+    mainContentHeight: 0
   }),
   computed: {
-    ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer'])
+    ...mapState(['viewportWidth', 'mailEndpoint', 'emailSubject', 'emailText', 'footerHeight']),
+    ...mapState('content', ['userForm', 'top'])
+  },
+  watch: {
+    page (val) {
+      if (!val) return
+      this.$vuetify.goTo(val, {
+        duration: 500,
+        offset: 20,
+        easing: 'easeInOutCubic'
+      })
+      this.page = undefined
+    },
+    mainContentHeight (val) {
+      document.body.style.height = val + this.footerHeight + 'px'
+    },
+    footerHeight (val) {
+      document.body.style.height = this.mainContentHeight + val + 'px'
+    }
   },
   methods: {
+    ...mapActions({
+      getGeneralInfo: 'GET_GENERAL_INFO'
+    }),
     ...mapActions('content', {
-      getContent: 'GET_CONTENT'
+      getPageContent: 'GET_PAGE_CONTENT'
     }),
-    ...mapActions('testimonials', {
-      getTestimonials: 'GET_CONTENT'
-    }),
+    mutationHandler (mutations) {
+      this.mainContentHeight = this.$el.offsetHeight
+    },
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
+      document.body.style.height = this.mainContentHeight + this.footerHeight + 'px'
     }
   },
   beforeMount () {
-    this.getContent()
+    this.getGeneralInfo()
+    this.getPageContent(5)
       .then((response) => {
-        document.title = this.browserTabTitle
+        document.title = response
         this.ready = true
       })
-    this.getTestimonials()
   },
   mounted () {
     this.onResize()
