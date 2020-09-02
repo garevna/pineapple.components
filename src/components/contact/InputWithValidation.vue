@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     validate (val) {
-      const error = !this.field.validator(val) || (this.field.required && !val)
+      const error = this.field.required ? !this.field.validator(val) : false
       this.$emit('update:error', error)
       this.color = error ? this.errorColor : this.validColor
       this.validationIcon = error ? '$invalid' : ''

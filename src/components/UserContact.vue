@@ -34,6 +34,18 @@
               :error.sync="field.error"
               v-if="field.type === 'combobox'"
         />
+        <DateInput
+              :field="field"
+              :value.sync="field.value"
+              :error.sync="field.error"
+              v-if="field.type === 'date-input'"
+        />
+        <TimeInput
+              :field="field"
+              :value.sync="field.value"
+              :error.sync="field.error"
+              v-if="field.type === 'time-input'"
+        />
         <InputMessage
               :field="field"
               :value.sync="field.value"
@@ -109,6 +121,8 @@ import { VCard, VCardText, VProgressLinear, VBtn } from 'vuetify/lib'
 import NumberInput from './contact/Number.vue'
 import List from './contact/List.vue'
 import Combo from './contact/Combo.vue'
+import DateInput from './contact/DateInput.vue'
+import TimeInput from './contact/TimeInput.vue'
 import InputWithValidation from './contact/InputWithValidation.vue'
 import InputMessage from './contact/InputMessage.vue'
 
@@ -122,6 +136,8 @@ export default {
     InputWithValidation,
     List,
     NumberInput,
+    DateInput,
+    TimeInput,
     Combo,
     InputMessage
   },
@@ -135,12 +151,14 @@ export default {
         phone: 'input-with-validation',
         state: 'selector',
         postcode: 'input-with-validation',
+        date: 'date-input',
+        time: 'time-input',
         list: 'selector',
         combo: 'combobox',
         message: 'textarea'
       },
       validators: {
-        text: val => val.length > 2,
+        text: val => val.length > 0,
         number: val => val.match(/^[0-9]*$/),
         email: val => val.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
         phone: val => val.match(/^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{2}( |-){0,1}[0-9]{1}( |-){0,1}[0-9]{3}$/),
@@ -148,7 +166,7 @@ export default {
         postcode: val => val.match(/^(?:(?:[2-8]\d|9[0-7]|0?[28]|0?9(?=09))(?:\d{2}))$/),
         list: null,
         combo: function (val) { return this.available.indexOf(val) !== -1 },
-        message: val => val.length >= 5
+        message: val => val.length > 0
       },
       ready: false,
       fields: null,
@@ -173,6 +191,14 @@ export default {
     setFieldsToShow (payload) {
       if (!payload || !Array.isArray(payload)) return null
       this.fields = payload.map((field) => {
+        if (field.placeholder.indexOf('Date') >= 0) {
+          console.log(field.placeholder)
+          field.type = 'date'
+        }
+        if (field.placeholder.indexOf('Time') >= 0) {
+          console.log(field.placeholder)
+          field.type = 'time'
+        }
         return {
           type: this.fieldTypes[field.type],
           placeholder: field.placeholder,
@@ -227,7 +253,7 @@ export default {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          subject: this.emailSubject,
+          subject: this.emailSubject || 'Ultra-Fast Fibre',
           email,
           message
         })
@@ -237,11 +263,11 @@ export default {
     },
 
     async sendUserRequest () {
-      if (location.host.indexOf('pineapple.net.au') < 0) {
-        this.popupType = 'disabled'
-        this.popupOpened = true
-        return
-      }
+      // if (location.host.indexOf('pineapple.net.au') < 0) {
+      //   this.popupType = 'disabled'
+      //   this.popupOpened = true
+      //   return
+      // }
       const error = this.fields.find(field => field.error)
       const emailField = this.fields.find(field => field.placeholder.toLowerCase().indexOf('email') >= 0)
       if (error || !emailField || !emailField.value) {

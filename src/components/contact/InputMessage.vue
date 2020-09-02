@@ -18,14 +18,14 @@
 
 export default {
   name: 'InputMessage',
-  props: ['field', 'value', 'error'],
+  props: ['field', 'value', 'error', 'required'],
   computed: {
     message: {
       get () {
         return this.field.value
       },
       set (val) {
-        this.$emit('update:error', val.length < 10)
+        this.$emit('update:error', this.required ? val.length < 10 : false)
         this.$emit('update:value', val)
       }
     }

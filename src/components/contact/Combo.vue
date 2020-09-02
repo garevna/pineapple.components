@@ -13,11 +13,12 @@
   ></v-text-field>
 </template>
 
-<style scoped>
-
+<style>
 .v-text-field.v-text-field--enclosed {
-  margin-bottom: 4px!important;
+    margin: 8px!important;
 }
+</style>
+<style scoped>
 
 .user-inputs {
   font-family: Gilroy;
@@ -67,7 +68,7 @@ export default {
   },
   methods: {
     validate (val) {
-      const error = this.field.available.indexOf(val) === -1 || (this.field.required && !val)
+      const error = this.field.required ? this.field.available.indexOf(val) === -1 : false
       this.$emit('update:error', error)
       this.color = error ? this.errorColor : this.validColor
       this.validationIcon = error ? '$invalid' : ''

@@ -50,7 +50,7 @@ export default {
   },
   beforeMount () {
     this.getGeneralInfo()
-    this.getPageContent(1)
+    this.getPageContent('1')
       .then((response) => {
         document.title = response
         this.ready = true
