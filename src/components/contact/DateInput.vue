@@ -18,7 +18,12 @@
                 v-on="on"
           ></v-text-field>
         </template>
-      <v-date-picker v-model="date" @input="menu = false"></v-date-picker>
+      <v-date-picker
+            v-model="date"
+            @input="menu = false"
+            locale="en"
+            :min="currentDate"
+      ></v-date-picker>
     </v-menu>
   </div>
 </template>
@@ -35,6 +40,7 @@
 <script>
 
 import { VMenu, VDatePicker, VTextField } from 'vuetify/lib'
+import en from 'vuetify/es5/locale/en'
 
 export default {
   name: 'DateInput',
@@ -43,8 +49,15 @@ export default {
     VDatePicker,
     VTextField
   },
+  lang: {
+    locales: {
+      en
+    },
+    current: 'en'
+  },
   data: () => ({
-    menu: false
+    menu: false,
+    currentDate: new Date().toISOString().slice(0, 10)
   }),
   props: ['field', 'value', 'error'],
   computed: {

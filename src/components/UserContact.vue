@@ -192,11 +192,9 @@ export default {
       if (!payload || !Array.isArray(payload)) return null
       this.fields = payload.map((field) => {
         if (field.placeholder.indexOf('Date') >= 0) {
-          console.log(field.placeholder)
           field.type = 'date'
         }
         if (field.placeholder.indexOf('Time') >= 0) {
-          console.log(field.placeholder)
           field.type = 'time'
         }
         return {

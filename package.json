@@ -1,6 +1,6 @@
 {
   "name": "pineapple-contact-form",
-  "version": "1.2.2",
+  "version": "1.2.8",
   "description": "Component for npm registry",
   "keywords": [
     "pineapple",
@@ -22,7 +22,7 @@
     "css-watch": "npm run css-build -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "contact-form": "vue-cli-service build --target lib --name pineapple-contact-form ./src/components/contact-form-index.js",
+    "package": "vue-cli-service build --target lib --name pineapple-contact-form ./src/components/contact-form-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
