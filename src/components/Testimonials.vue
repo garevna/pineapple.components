@@ -2,7 +2,12 @@
   <v-container fluid class="homefone" v-if="ready">
     <v-card flat class="transparent mx-auto mt-12 mb-0 text-center" max-width="1360">
       <v-card-text class="text-center" max-width="940">
-        <h2 style="width: 100%; text-align: center">{{ testimonials.header }}</h2>
+        <h2 v-if="testimonials.header">
+          {{ testimonials.header }}
+        </h2>
+        <h1 v-else>
+          Our customers <span class="green--text">love us.</span>
+        </h1>
       </v-card-text>
 
       <v-slide-group
@@ -82,6 +87,7 @@
 </template>
 
 <style>
+
 .testimonials .v-btn__content,
 .testimonials .mdi::before,
 .testimonials .mdi-chevron-right::before,
@@ -95,6 +101,11 @@
 </style>
 
 <style scoped>
+
+h1, h2 {
+  width: 100%;
+  text-align: center;
+}
 .v-carousel__controls {
   z-index: 0!important;
 }
@@ -147,6 +158,10 @@ export default {
   },
   beforeMount () {
     this.getContent()
+    // .then(() => {
+    //   this.testimonials.header = ''
+    //   this.testimonials.button = null
+    // })
   }
 }
 </script>

@@ -1,6 +1,6 @@
 {
   "name": "pineapple-testimonials",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Component for npm registry",
   "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
@@ -21,7 +21,7 @@
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "testimonials": "vue-cli-service build --target lib --name pineapple-testimonials ./src/components/testimonials-index.js",
+    "package": "vue-cli-service build --target lib --name pineapple-testimonials ./src/components/testimonials-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
