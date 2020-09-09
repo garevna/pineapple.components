@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="homefone my-12" v-if="howToConnect">
-    <v-card flat class="transparent text-center mx-auto" width="100%">
-      <v-card-text class="text-center">
+    <v-card flat class="d-flex flex-wrap justify-center transparent">
+      <v-card-text class="text-center" v-if="howToConnect.header">
         <h2>{{ howToConnect.header }}</h2>
       </v-card-text>
       <v-card-text v-if="howToConnect.text">
@@ -10,27 +10,35 @@
     </v-card>
 
     <v-container fluid class="mt-8 mb-12">
-      <v-card flat class="d-flex flex-wrap justify-center transparent">
-        <v-card
-              flat
-              class="transparent text-center mx-auto"
-              width="240"
+      <v-card flat class="transparent mx-auto" max-width="1200">
+        <v-row align="center" justify="center">
+          <v-col
+              cols="12"
+              md="4"
               v-for="(item, index) in howToConnect.items"
               :key="index"
-        >
-          <v-img
-                :src="item.icon"
-                max-width="200"
-                min-with="150"
-                class="mx-auto"
-          />
-          <v-card-text class="text-center">
-            <h3 v-html="item.title.split('\n').join('<br>')"></h3>
-          </v-card-text>
-          <v-card-text max-width="600" class="mx-auto">
-            <p v-html="item.text.split('\n').join('<br>')"></p>
-          </v-card-text>
-        </v-card>
+          >
+            <v-card
+                  flat
+                  class="transparent text-center mx-auto"
+                  width="280"
+            >
+              <v-img
+                    :src="item.icon"
+                    max-width="248"
+                    min-with="200"
+                    class="icon-button mx-auto"
+                    @click.stop="clickHandler(index)"
+              />
+              <v-card-text class="text-center">
+                <h3 v-html="item.title.split('\n').join('<br>')"></h3>
+              </v-card-text>
+              <v-card-text max-width="600" class="mx-auto">
+                <p v-html="item.text.split('\n').join('<br>')"></p>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-card>
     </v-container>
     <v-card flat class="transparent mx-auto text-center" width="600" min-width="300">
@@ -53,16 +61,26 @@ h3, p {
   color: #000;
 }
 
-@media screen and (max-width: 320px) {
+.icon-button {
+  cursor: pointer;
+}
+
+.submit-button {
+  width: 420px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 420px) {
   .submit-button {
-    max-width: 300px!important;
+    max-width: 280px!important;
+    font-size: 14px!important;
   }
 }
 </style>
 
 <script>
 
-import { VContainer, VCard, VCardText, VImg, VBtn } from 'vuetify/lib'
+import { VContainer, VCard, VCardText, VImg, VBtn, VRow, VCol } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
@@ -73,9 +91,11 @@ export default {
     VCard,
     VCardText,
     VImg,
-    VBtn
+    VBtn,
+    VRow,
+    VCol
   },
-  props: ['page'],
+  props: ['page', 'clicked'],
   data () {
     return {
       contact: false
@@ -89,6 +109,11 @@ export default {
       if (!val) return
       this.$emit('update:page', '#contact')
       this.contact = false
+    }
+  },
+  methods: {
+    clickHandler (index) {
+      this.$emit('update:clicked', index + 1)
     }
   }
 }

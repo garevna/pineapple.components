@@ -1,6 +1,9 @@
 <template>
   <v-app>
-    <HowToConnect :page.sync="page" />
+    <HowToConnect
+          :page.sync="page"
+          :clicked.sync="clicked"
+    />
   </v-app>
 </template>
 
@@ -20,12 +23,19 @@ export default {
   },
 
   data: () => ({
+    page: 0,
+    clicked: 0,
     popupOpened: false,
     popupErrorOpened: false,
     popupEmailDisabled: false
   }),
   computed: {
     ...mapState(['viewportWidth'])
+  },
+  watch: {
+    clicked (val) {
+      console.log('Clicked: ', val)
+    }
   },
   methods: {
     ...mapActions({
