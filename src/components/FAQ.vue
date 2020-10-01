@@ -18,11 +18,11 @@
           <v-expansion-panel-header class="text-left">
             <h5>{{ item.question }}</h5>
             <template v-slot:actions>
-              <v-icon color="#444">$expand</v-icon>
+              <v-icon color="#444">mdi-chevron-down</v-icon>
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <p class="text-justify py-4" v-html="item.answer"></p>
+            <p class="text-justify py-4" v-html="item.answer.split('\n').join('<br>')"></p>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>

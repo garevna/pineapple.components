@@ -18,29 +18,9 @@ import 'pineapple-styles'
 import 'pineapple-system-bar'
 import 'pineapple-system-bar/dist/pineapple-system-bar.css'
 
-/* MainNavBar */
-import 'pineapple-main-nav-bar'
-import 'pineapple-main-nav-bar/dist/pineapple-main-nav-bar.css'
-
-/* HowToConnect */
-import 'pineapple-how-to-connect'
-import 'pineapple-how-to-connect/dist/pineapple-how-to-connect.css'
-
-/* Testimonials */
-import 'pineapple-testimonials'
-import 'pineapple-testimonials/dist/pineapple-testimonials.css'
-
-/* InternetPlans */
-import 'pineapple-internet-plans'
-import 'pineapple-internet-plans/dist/pineapple-internet-plans.css'
-
 /* Popup */
 import 'pineapple-popup'
 import 'pineapple-popup/dist/pineapple-popup.css'
-
-/* UserContact */
-import 'pineapple-contact-form'
-import 'pineapple-contact-form/dist/pineapple-contact-form.css'
 
 /* Footer */
 import 'pineapple-footer'
@@ -99,7 +79,7 @@ export default {
   },
   beforeMount () {
     this.getGeneralInfo()
-    this.getPageContent(5)
+    this.getPageContent(3)
       .then((response) => {
         document.title = response
         this.ready = true

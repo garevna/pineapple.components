@@ -13,7 +13,7 @@ yarn add pineapple-faq
 
 App.vue
 ```
-import Footer from 'pineapple-faq'
+import 'pineapple-faq'
 import 'pineapple-faq/dist/pineapple-faq.css'
 ```
 
@@ -23,21 +23,56 @@ import 'pineapple-faq/dist/pineapple-faq.css'
 <FAQ />
 ```
 
+## Data
+
+### Store
+
+#### Module
+
+FAQ's souce data should be stored module **content** of vuex store
+
+#### State
+
+in **_faq_** section of state
+
+### Structure
+
+###### Example
+
+```
+faq: {
+  header:'We’ve Answered Some Common Questions',
+  button: 'Get in Touch',
+  goto: '#contact',
+  items: [
+    {
+      question: 'Text of question here...',
+      answer: 'Some text of answer here...'
+    },
+    {
+      question: 'Text of question here...',
+      answer: 'Some text of answer here...'
+    },
+    ...
+  ]
+}
+```
+
 _____________________________
 
-#### You can add the global styles and fonts to the project from this package
+#### Styles and fonts
 
-You can install the fonts and variables of pineapple.net.au projects so:
+You should install the fonts and variables:
 
 ###### main.js
 ```
-import 'pineapple-footer/css/fonts.scss'
-import 'pineapple-footer/css/variables.scss'
+import 'pineapple-styles/css/fonts.scss'
+import 'pineapple-styles/css/variables.scss'
 ```
 
-You can install global styles of pineapple.net.au projects so:
+and then install global styles:
 
 ###### App.vue
 ```
-import 'pineapple-footer/css/main.css'
+import 'pineapple-styles'
 ```
