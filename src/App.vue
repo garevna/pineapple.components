@@ -3,11 +3,16 @@
     <SystemBar />
     <MainNavBar :page.sync="page" v-if="ready" />
 
-    <section id="top" class="section">
-          <div class="base-title">
+    <section id="top" class="section mt-12">
+          <div class="base-title mt-12">
             <a href="#top" class="core-goto"></a>
-            <v-card width="100%" height="600" class="mx-auto pa-10 text-center">
+            <v-card width="100%" height="600" class="mt-12 mx-auto pa-12 text-center">
               <h2>TOP</h2>
+              <v-btn
+                    v-for="route in [1, 2, '2-1', 3, 4, 5, 'live']"
+                    :key="route"
+                    @click="$router.push({ path: `/${route}` })"
+              > {{ route }} </v-btn>
             </v-card>
           </div>
         </section>
@@ -34,6 +39,30 @@
           </v-card>
         </div>
       </section>
+
+      <!-- ============================= BENEFITS ============================= -->
+      <v-row width="100%">
+        <section id="benefits" class="section">
+          <div class="base-title">
+            <a href="#benefits" class="core-goto"></a>
+            <v-card width="100%" height="600" class="mx-auto pa-10 text-center">
+              <h2>Benefits</h2>
+            </v-card>
+          </div>
+        </section>
+      </v-row>
+
+      <!-- ============================= CONTACT ============================= -->
+      <v-row width="100%">
+        <section id="contact" class="section">
+          <div class="base-title">
+            <a href="#contact" class="core-goto"></a>
+            <v-card width="100%" height="600" class="mx-auto pa-10 text-center">
+              <h2>Contact Us (form here)</h2>
+            </v-card>
+          </div>
+        </section>
+      </v-row>
 
       <!-- ============================= HOW TO CONNECT ============================= -->
 
@@ -80,14 +109,14 @@
         </section>
       </v-row>
       <!-- ============================= FOOTER ============================= -->
-      <section id="footer" class="homefone" style="width: 100%">
+      <!-- <section id="footer" class="homefone" style="width: 100%">
         <div class="base-title">
           <a href="#footer" class="core-goto"></a>
           <v-card width="100%">
             <Footer />
           </v-card>
         </div>
-      </section>
+      </section> -->
   </v-app>
 </template>
 
@@ -107,8 +136,8 @@ import 'pineapple-styles'
 import 'pineapple-system-bar'
 import 'pineapple-system-bar/dist/pineapple-system-bar.css'
 
-import 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
+// import 'pineapple-footer'
+// import 'pineapple-footer/dist/pineapple-footer.css'
 
 import MainNavBar from '@/components/MainNavBar.vue'
 
@@ -135,6 +164,13 @@ export default {
         easing: 'easeInOutCubic'
       })
       this.page = undefined
+    },
+    $route: {
+      deep: true,
+      handler (val) {
+        console.log('ROUTE: ', val.path.slice(1))
+        this.getPageContent(val.path.slice(1))
+      }
     }
   },
   methods: {
@@ -150,7 +186,7 @@ export default {
   },
   beforeMount () {
     this.getGeneralInfo()
-    this.getPageContent(3)
+    this.getPageContent(this.$route.path.slice(1) || 'live')
       .then((response) => {
         document.title = response
         this.ready = true

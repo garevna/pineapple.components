@@ -25,11 +25,11 @@
       <v-expansion-panel-content color="#FAFAFA">
             <v-list flat class="main-menu-content text-center">
               <v-list-item
-                  v-for="(page, index) in mainNavButtons"
-                  :key="index"
+                  v-for="(button, index) in mainNavButtons"
+                  :key="button"
                   @click="$emit('update:page', mainNavSectors[index]); panel=false"
               >
-                <v-list-item-title class="main-menu-items">{{ page }}</v-list-item-title>
+                <v-list-item-title class="main-menu-items">{{ button }}</v-list-item-title>
               </v-list-item>
             </v-list>
       </v-expansion-panel-content>
@@ -53,11 +53,11 @@
               v-model="toggle"
       >
         <v-btn text
-               v-for="(page, index) in mainNavButtons"
-               :key="index"
-               :class="getClassName(page)"
-               @click="$emit('update:page', mainNavSectors[index])">
-              {{ page }}
+               v-for="(button, index) in mainNavButtons"
+               :key="button"
+               :class="getClassName(button)"
+               @click="$emit('update:page', mainNavSectors[index]); panel=false">
+              {{ button }}
         </v-btn>
       </v-btn-toggle>
     </v-row>
@@ -166,11 +166,28 @@ export default {
       return this.panel === 0 ? 'burger-menu-active--second' : 'burger-menu--second'
     }
   },
+  watch: {
+    mainNavButtons: {
+      deep: true,
+      handler (val) {
+        console.log('mainNavButtons changed!')
+      }
+    },
+    $route: {
+      deep: true,
+      handler (val) {
+        console.log('MainNavBar: route changed', val)
+      }
+    }
+  },
   methods: {
     getClassName (pageName) {
       const className = pageName === 'Contact Us' ? ' app-bar-menu-bordered py-2 px-12' : ''
       return `app-bar-menu${className}`
     }
+  },
+  updated () {
+    console.log('Updated!')
   }
 }
 </script>
