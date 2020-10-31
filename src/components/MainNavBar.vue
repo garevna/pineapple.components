@@ -5,9 +5,9 @@
           tile
           flat
           v-model="panel"
-          class="app-bar d-lg-none"
+          class="app-bar app-bar--short d-lg-none"
           width="100%"
-          style="position: fixed; margin-top: 40px; z-index: 10; left: 0"
+          style=""
   >
     <v-expansion-panel style="background: #FAFAFA">
       <v-expansion-panel-header
@@ -17,10 +17,10 @@
           >
             <div></div>
             <v-spacer></v-spacer>
-            <v-btn text class="burger-menu" height="48" width="48">
+            <figure class="burger-menu">
               <span :class="burgerMenuClassFirst"></span>
               <span :class="burgerMenuClassSecond"></span>
-            </v-btn>
+            </figure>
       </v-expansion-panel-header>
       <v-expansion-panel-content color="#FAFAFA">
             <v-list flat class="main-menu-content text-center">
@@ -42,7 +42,7 @@
           fixed
           height="80"
           flat
-          class="homefone app-bar d-none d-lg-block"
+          class="homefone d-none d-lg-block"
   >
     <v-row align="center" justify="end">
       <v-btn-toggle
@@ -62,13 +62,28 @@
       </v-btn-toggle>
     </v-row>
   </v-app-bar>
-  <logo style="position: fixed; top: 60px; left: 32px; width: 110px; height: 35px; z-index: 100;" />
+  <logo class="main-menu-logo" />
 </v-container>
 </template>
 
 <style scoped>
 .v-btn-toggle > .v-btn.v-btn--active {
   color: #72BF44!important;
+}
+.main-menu-logo {
+  position: fixed;
+  top: 60px;
+  left: 24px;
+  width: 110px;
+  height: 35px;
+  z-index: 11;
+}
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 40px;
+  z-index: 10;
 }
 .app-bar-icon {
   display: inline-block;
@@ -88,11 +103,12 @@
   border-radius: 100px!important;
 }
 .burger-menu {
+  position: relative;
   height: 48px;
   min-width: 48px!important;
   max-width: 64px!important;
-  top: 0!important;
-  left: 0!important;
+  top: 24px!important;
+  left: 16px!important;
 }
 .burger-menu--first, .burger-menu--second,
 .burger-menu-active--first, .burger-menu-active--second {
@@ -131,7 +147,7 @@
 
 <script>
 
-import { VContainer, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VAppBar, VRow, VBtnToggle, VBtn } from 'vuetify/lib'
+// import { VContainer, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VAppBar, VRow, VBtnToggle, VBtn } from 'vuetify/lib'
 import logo from '@/components/logo.vue'
 
 import { mapState } from 'vuex'
@@ -139,15 +155,15 @@ import { mapState } from 'vuex'
 export default {
   name: 'AppHeader',
   components: {
-    VContainer,
-    VExpansionPanels,
-    VExpansionPanel,
-    VExpansionPanelHeader,
-    VExpansionPanelContent,
-    VAppBar,
-    VRow,
-    VBtnToggle,
-    VBtn,
+    // VContainer,
+    // VExpansionPanels,
+    // VExpansionPanel,
+    // VExpansionPanelHeader,
+    // VExpansionPanelContent,
+    // VAppBar,
+    // VRow,
+    // VBtnToggle,
+    // VBtn,
     logo
   },
   props: ['page'],
@@ -166,28 +182,11 @@ export default {
       return this.panel === 0 ? 'burger-menu-active--second' : 'burger-menu--second'
     }
   },
-  watch: {
-    mainNavButtons: {
-      deep: true,
-      handler (val) {
-        console.log('mainNavButtons changed!')
-      }
-    },
-    $route: {
-      deep: true,
-      handler (val) {
-        console.log('MainNavBar: route changed', val)
-      }
-    }
-  },
   methods: {
     getClassName (pageName) {
       const className = pageName === 'Contact Us' ? ' app-bar-menu-bordered py-2 px-12' : ''
       return `app-bar-menu${className}`
     }
-  },
-  updated () {
-    console.log('Updated!')
   }
 }
 </script>

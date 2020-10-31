@@ -9,7 +9,6 @@ const getters = {
 
 const mutations = {
   UPDATE_NAV_BUTTONS: (state, payload) => {
-    console.log(payload)
     state.mainNavButtons = Object.assign([], payload.mainNavButtons)
     state.mainNavSectors = Object.assign([], payload.mainNavSectors)
   }
@@ -18,7 +17,6 @@ const mutations = {
 const actions = {
   async GET_PAGE_CONTENT (context, route) {
     const content = await (await fetch(`${context.getters.contentEndpoint}/${route}`)).json()
-    console.log('Data received', route)
     const { mainNavButtons, mainNavSectors, browserTabTitle, emailSubject, emailText, ...rest } = content
     context.commit('UPDATE_NAV_BUTTONS', { mainNavButtons, mainNavSectors })
     if (emailSubject) context.commit('UPDATE_EMAIL_SUBJECT', emailSubject, { root: true })

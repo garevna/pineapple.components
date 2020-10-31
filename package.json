@@ -1,6 +1,6 @@
 {
   "name": "pineapple-main-nav-bar",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Component for npm registry",
   "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
@@ -21,7 +21,7 @@
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "main-nav-bar": "vue-cli-service build --target lib --name pineapple-main-nav-bar ./src/components/main-nav-bar-index.js",
+    "package": "vue-cli-service build --target lib --name pineapple-main-nav-bar ./src/components/main-nav-bar-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
