@@ -81,10 +81,6 @@
 
 <script>
 
-/* VSlideXTransition, */
-
-import { VCard, VCardText, VCarousel, VCarouselItem, VRow, VSheet, VBtn } from 'vuetify/lib'
-
 import { mapState } from 'vuex'
 
 import PriceCard from './plans/PriceCard.vue'
@@ -93,13 +89,6 @@ import SwitchMode from './plans/SwitchToggle.vue'
 export default {
   name: 'InternetPlans',
   components: {
-    VCard,
-    VCardText,
-    VCarousel,
-    VCarouselItem,
-    VRow,
-    VSheet,
-    VBtn,
     PriceCard,
     SwitchMode
   },
@@ -108,7 +97,6 @@ export default {
     return {
       contact: false,
       selected: null,
-      endpoint: 'https://api.pineapple.net.au/content/plans',
       plans: null
     }
   },
@@ -143,7 +131,7 @@ export default {
   },
   methods: {
     async getPrices () {
-      const { plans } = await (await fetch(this.endpoint)).json()
+      const { plans } = await (await fetch('https://api.pineapple.net.au/content/plans')).json()
       this.plans = plans
     }
   },

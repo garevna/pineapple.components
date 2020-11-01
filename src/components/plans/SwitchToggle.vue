@@ -190,16 +190,10 @@ input:checked + .slider {
 
 <script>
 
-import { VRow, VCol } from 'vuetify/lib'
-
 import { mapState } from 'vuex'
 
 export default {
   name: 'SwitchMode',
-  components: {
-    VRow,
-    VCol
-  },
   data () {
     return {
       classes: ['residential', 'business'],

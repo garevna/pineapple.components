@@ -73,14 +73,8 @@ p {
 
 <script>
 
-import { VCard, VCardText } from 'vuetify/lib'
-
 export default {
   name: 'PriceCard',
-  components: {
-    VCard,
-    VCardText
-  },
   props: ['item', 'index', 'contact']
 }
 </script>
