@@ -80,23 +80,10 @@ h2 {
 
 <script>
 
-import { VContainer, VCard, VCardText, VExpansionPanels, VExpansionPanel, VExpansionPanelHeader, VExpansionPanelContent, VIcon, VBtn } from 'vuetify/lib'
-
 import { mapState } from 'vuex'
 
 export default {
   name: 'FAQ',
-  components: {
-    VContainer,
-    VCard,
-    VCardText,
-    VExpansionPanels,
-    VExpansionPanel,
-    VExpansionPanelHeader,
-    VExpansionPanelContent,
-    VIcon,
-    VBtn
-  },
   props: ['page'],
   data () {
     return {

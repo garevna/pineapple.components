@@ -1,9 +1,7 @@
 <template>
   <v-app>
-    <v-container fluid fill-height class="homefone" v-if="ready" v-mutate="mutationHandler">
-      <SystemBar />
+    <v-container fluid fill-height class="homefone" v-if="ready">
       <FAQ />
-      <Footer />
     </v-container>
   </v-app>
 </template>
@@ -13,18 +11,6 @@
 import { mapState, mapActions } from 'vuex'
 
 import 'pineapple-styles'
-
-/* SystemBar */
-import 'pineapple-system-bar'
-import 'pineapple-system-bar/dist/pineapple-system-bar.css'
-
-/* Popup */
-import 'pineapple-popup'
-import 'pineapple-popup/dist/pineapple-popup.css'
-
-/* Footer */
-import 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
 
 import FAQ from '@/components/FAQ.vue'
 
@@ -37,9 +23,7 @@ export default {
 
   data: () => ({
     page: null,
-    plans: false,
-    ready: false,
-    mainContentHeight: 0
+    ready: false
   }),
   computed: {
     ...mapState(['viewportWidth', 'mailEndpoint', 'emailSubject', 'emailText', 'footerHeight']),
@@ -79,7 +63,7 @@ export default {
   },
   beforeMount () {
     this.getGeneralInfo()
-    this.getPageContent(3)
+    this.getPageContent(2)
       .then((response) => {
         document.title = response
         this.ready = true
