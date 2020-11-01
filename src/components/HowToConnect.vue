@@ -80,21 +80,10 @@ h3, p {
 
 <script>
 
-import { VContainer, VCard, VCardText, VImg, VBtn, VRow, VCol } from 'vuetify/lib'
-
 import { mapState } from 'vuex'
 
 export default {
   name: 'HowToConnect',
-  components: {
-    VContainer,
-    VCard,
-    VCardText,
-    VImg,
-    VBtn,
-    VRow,
-    VCol
-  },
   props: ['page', 'clicked'],
   data () {
     return {
