@@ -1,5 +1,10 @@
 <template>
-  <v-card flat class="transparent footer--top-content" :style="{ top: top }" v-if="footer">
+  <v-card
+    v-if="ready"
+    flat
+    class="transparent footer--top-content"
+    :style="{ top: top }"
+  >
     <v-card-text class="text-center">
       <h2 class="white-text centered">{{ header }}</h2>
       <h5 class="white-text centered mt-8">
@@ -104,7 +109,7 @@
 
 <script>
 
-import { VCard, VCardText, VRow, VCol, VTextField, VBtn } from 'vuetify/lib'
+// import { VCard, VCardText, VRow, VCol, VTextField, VBtn } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
@@ -113,12 +118,12 @@ import FooterFormSmall from './FooterFormSmall.vue'
 export default {
   name: 'FooterForm',
   components: {
-    VCard,
-    VCardText,
-    VRow,
-    VCol,
-    VTextField,
-    VBtn,
+    // VCard,
+    // VCardText,
+    // VRow,
+    // VCol,
+    // VTextField,
+    // VBtn,
     FooterFormSmall
   },
   props: ['emailEndpoint', 'emailSubject', 'emailText', 'top'],
@@ -139,19 +144,21 @@ export default {
     }
   },
   computed: {
-    ...mapState(['viewportWidth']),
-    ...mapState('content', ['footer']),
+    ...mapState(['viewportWidth', 'footer']),
+    ready () {
+      return !!this.footer
+    },
     header () {
-      return this.footer && this.footer.topHead ? this.footer.topHead : 'READY TO GET STARTED?'
+      return this.footer.topHead || 'READY TO GET STARTED?'
     },
     text () {
-      return this.footer && this.footer.topText ? this.footer.topText : 'Leave your inquiry and we\'ll get back to you within 24 hours on business days'
+      return this.footer.topText || 'Leave your inquiry and we\'ll get back to you within 24 hours on business days'
     },
     mailSubject () {
-      return this.emailSubject ? this.emailSubject : location.hostname
+      return this.emailSubject || location.hostname
     },
     mailText () {
-      return this.emailText ? this.emailText : 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.'
+      return this.emailText || 'Thank you for your interest in Pineapple NET! A member of our team will be in touch shortly.'
     }
   },
   watch: {

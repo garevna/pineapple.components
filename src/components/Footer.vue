@@ -6,8 +6,8 @@
   >
     <v-row style="position: relative; bottom: 0">
       <FooterFone
-              :height="figureHeight + 'px'"
-              style="position: absolute; top: 0; left: 0; width: 100%"
+          :height="figureHeight + 'px'"
+          style="position: absolute; top: 0; left: 0; width: 100%"
       />
       <v-row align="start" justify="center" :style="{ position: 'absolute', top: top, left: '0', width: '100%' }">
         <FooterForm
@@ -36,7 +36,7 @@
 
 <script>
 
-import { VContainer, VRow } from 'vuetify/lib'
+// import { VContainer, VRow } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
@@ -48,8 +48,8 @@ import FooterBottomContentSmall from './BottomContentSmall.vue'
 export default {
   name: 'Footer',
   components: {
-    VContainer,
-    VRow,
+    // VContainer,
+    // VRow,
     FooterFone,
     FooterForm,
     FooterBottomContentSmall,

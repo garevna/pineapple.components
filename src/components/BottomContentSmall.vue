@@ -48,24 +48,24 @@
 .copyright {
   text-align: center;
   color: #9B9B9B;
-  font-size: 11px;
-  margin-top: 20px;
+  font-size: 11px!important;
+  margin-top: -4px;
   margin-bottom: 0;
 }
 </style>
 
 <script>
 
-import { VCard, VCardText } from 'vuetify/lib'
+// import { VCard, VCardText } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
 export default {
   name: 'FooterBottomContent',
-  components: {
-    VCard,
-    VCardText
-  },
+  // components: {
+  //   VCard,
+  //   VCardText
+  // },
   computed: {
     ...mapState(['viewportWidth', 'officePhone', 'officeAddress', 'linkedIn', 'faceBook']),
     ...mapState('content', ['copyright'])

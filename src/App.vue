@@ -57,6 +57,14 @@ export default {
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
       document.body.style.height = this.mainContentHeight + this.footerHeight + 'px'
+    },
+    async getData () {
+      this.getGeneralInfo()
+      this.getPageContent(2)
+        .then((response) => {
+          document.title = response
+          this.ready = true
+        })
     }
   },
   watch: {
@@ -67,18 +75,10 @@ export default {
       document.body.style.height = this.mainContentHeight + val + 'px'
     }
   },
-  beforeMount () {
-    this.getGeneralInfo()
-    this.getPageContent(3)
-      .then((response) => {
-        document.title = response
-        this.ready = true
-      })
-  },
   mounted () {
     this.onResize()
-    console.log('MOUNTED - footer height: ', this.footerHeight)
     window.addEventListener('resize', this.onResize, { passive: true })
+    this.getData()
   },
   beforeDestroy () {
     if (typeof window !== 'undefined') {

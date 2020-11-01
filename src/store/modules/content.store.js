@@ -26,6 +26,7 @@ const actions = {
     commit('UPDATE_NAV_BUTTONS', { mainNavButtons, mainNavSectors })
     commit('UPDATE_EMAIL_SUBJECT', emailSubject, { root: true })
     commit('UPDATE_EMAIL_TEXT', emailText, { root: true })
+    commit('UPDATE_FOOTER', rest.footer, { root: true })
     return browserTabTitle
   }
 }

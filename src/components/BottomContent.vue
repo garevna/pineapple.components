@@ -87,18 +87,18 @@
 
 <script>
 
-import { VRow, VCol, VCard, VCardTitle, VCardText } from 'vuetify/lib'
+// import { VRow, VCol, VCard, VCardTitle, VCardText } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
 export default {
   name: 'FooterBottomContent',
   components: {
-    VRow,
-    VCol,
-    VCard,
-    VCardTitle,
-    VCardText
+    // VRow,
+    // VCol,
+    // VCard,
+    // VCardTitle,
+    // VCardText
   },
   props: ['top'],
   computed: {

@@ -128,15 +128,15 @@
 
 <script>
 
-import { VContainer } from 'vuetify/lib'
+// import { VContainer } from 'vuetify/lib'
 
 import { mapState } from 'vuex'
 
 export default {
   name: 'FooterFone',
-  components: {
-    VContainer
-  },
+  // components: {
+  //   VContainer
+  // },
   props: ['height'],
   computed: {
     ...mapState(['viewportWidth'])
