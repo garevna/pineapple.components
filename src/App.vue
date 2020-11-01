@@ -2,7 +2,7 @@
   <v-app>
       <!-- ============================= TESTIMONIALS ============================= -->
 
-      <section id="testimonials" style="width: 100%">
+      <section id="testimonials" style="width: 100%" class="homefone">
         <div class="base-title">
           <a href="#testimonials" class="core-goto"></a>
           <Testimonials :page.sync="page" />

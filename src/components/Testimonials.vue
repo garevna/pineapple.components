@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="homefone" v-if="ready">
+  <v-container fluid class="trasparent" v-if="ready">
     <v-card flat class="transparent mx-auto mt-12 mb-0 text-center" max-width="1360">
       <v-card-text class="text-center" max-width="940">
         <h2 v-if="testimonials.header">
@@ -24,8 +24,8 @@
         >
           <v-card
             flat
-            class="ma-4"
-            height="250"
+            class="transparent ma-4"
+            height="340"
             width="376"
             @click="toggle"
           >
@@ -52,7 +52,7 @@
             :continuous="true"
             :show-arrows="true"
             hide-delimiters
-            height="280"
+            height="420"
             width="100%"
             light
             class="testimonials transparent my-10"
@@ -112,31 +112,18 @@ h1, h2 {
 </style>
 
 <script>
-import { VContainer, VCard, VCardText, VSlideGroup, VSlideItem, VScaleTransition, VCarousel, VCarouselItem, VSheet, VRow, VBtn } from 'vuetify/lib'
+
 import TestimonialsCard from './TestimonialsCard.vue'
 import { mapState } from 'vuex'
 export default {
   name: 'Testimonials',
   components: {
-    VContainer,
-    VCard,
-    VCardText,
-    VSlideGroup,
-    VSlideItem,
-    VScaleTransition,
-    VCarousel,
-    VCarouselItem,
-    VSheet,
-    VRow,
-    VBtn,
     TestimonialsCard
   },
   props: ['page'],
   data: () => ({
     model: 0,
-    content: null,
-    contentEndpoint: 'https://api.pineapple.net.au/testimonials',
-    avatarsEndpoint: 'https://api.pineapple.net.au/avatars'
+    content: null
   }),
   computed: {
     ...mapState('content', ['testimonials']),
@@ -153,15 +140,11 @@ export default {
   },
   methods: {
     async getContent () {
-      this.content = await (await fetch(this.contentEndpoint)).json()
+      this.content = await (await fetch('https://api.pineapple.net.au/testimonials')).json()
     }
   },
   beforeMount () {
     this.getContent()
-    // .then(() => {
-    //   this.testimonials.header = ''
-    //   this.testimonials.button = null
-    // })
   }
 }
 </script>
