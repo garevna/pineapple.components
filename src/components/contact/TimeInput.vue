@@ -48,16 +48,9 @@ input[type="number"] {
 
 <script>
 
-import { VSelect, VCard } from 'vuetify/lib'
-
 export default {
 
   name: 'DateInput',
-
-  components: {
-    VSelect,
-    VCard
-  },
 
   props: ['field', 'value', 'error'],
 

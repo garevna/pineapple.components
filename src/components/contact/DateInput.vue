@@ -39,22 +39,8 @@
 
 <script>
 
-import { VMenu, VDatePicker, VTextField } from 'vuetify/lib'
-import en from 'vuetify/es5/locale/en'
-
 export default {
   name: 'DateInput',
-  components: {
-    VMenu,
-    VDatePicker,
-    VTextField
-  },
-  lang: {
-    locales: {
-      en
-    },
-    current: 'en'
-  },
   data: () => ({
     menu: false,
     currentDate: new Date().toISOString().slice(0, 10)

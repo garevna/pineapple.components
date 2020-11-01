@@ -116,8 +116,6 @@ h4 {
 
 <script>
 
-import { VCard, VCardText, VProgressLinear, VBtn } from 'vuetify/lib'
-
 import NumberInput from './contact/Number.vue'
 import List from './contact/List.vue'
 import Combo from './contact/Combo.vue'
@@ -129,10 +127,6 @@ import InputMessage from './contact/InputMessage.vue'
 export default {
   name: 'UserContact',
   components: {
-    VCard,
-    VCardText,
-    VProgressLinear,
-    VBtn,
     InputWithValidation,
     List,
     NumberInput,
