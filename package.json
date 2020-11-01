@@ -1,6 +1,6 @@
 {
   "name": "pineapple-system-bar",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Component for npm registry",
   "keywords": [
     "pineapple",
@@ -20,7 +20,7 @@
     "css-watch": "npm run css-build -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "system-bar": "vue-cli-service build --target lib --name pineapple-system-bar ./src/components/system-bar-index.js",
+    "package": "vue-cli-service build --target lib --name pineapple-system-bar ./src/components/system-bar-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
