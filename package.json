@@ -1,6 +1,6 @@
 {
   "name": "pineapple-faq",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Component for npm registry",
   "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
@@ -26,6 +26,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@iconify/iconify": "^1.0.7",
     "core-js": "^3.6.5",
     "pineapple-styles": "^1.1.9",
     "vue": "^2.6.11",

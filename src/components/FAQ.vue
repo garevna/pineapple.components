@@ -18,7 +18,8 @@
           <v-expansion-panel-header class="text-left">
             <h5>{{ item.question }}</h5>
             <template v-slot:actions>
-              <v-icon color="#444">mdi-chevron-down</v-icon>
+              <!-- <v-icon large color="#444">mdi-chevron-down</v-icon> -->
+              <span class="iconify" data-icon="mdi-chevron-down" color="#777" />
             </template>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
@@ -41,6 +42,11 @@
 </template>
 
 <style scoped>
+
+.iconify {
+  width: 24px;
+  height: 24px;
+}
 
 h2 {
   text-align: center!important;
