@@ -1,7 +1,7 @@
 {
   "name": "pineapple-footer",
-  "version": "2.2.8",
-  "description": "Component for npm registry",
+  "version": "2.2.9",
+  "description": "Component for npm registry (without mdi and Roboto, suitable for nuxt)",
   "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
     "pineapple",
