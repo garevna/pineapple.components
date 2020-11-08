@@ -23,6 +23,8 @@ import { mapState } from 'vuex'
 import 'pineapple-styles'
 import Popup from './components/Popup.vue'
 
+import '@iconify/iconify'
+
 export default {
   name: 'App',
 

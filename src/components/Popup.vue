@@ -12,13 +12,14 @@
             </h3>
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn
-              icon
-              dark
-            >
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
+          <v-toolbar-items class="pt-4">
+            <span
+              class="iconify mx-auto"
+              data-icon="mdi:close"
+              :width="32"
+              :height="32"
+              color="#fff"
+            />
           </v-toolbar-items>
         </v-toolbar>
         <v-card-text>

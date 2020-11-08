@@ -31,6 +31,21 @@ const Popup = require('pineapple-popup')
 const PopupStyles = require('pineapple-popup/dist/pineapple-popup.css')
 ```
 
+## iconify
+
+In order to avoid loading all Material Design Icons and associated fonts, we use **iconify**
+
+First of all we need to install this package:
+
+```
+yarn add @iconify/iconify
+```
+
+Then we should add this `import` into App.js:
+```
+import '@iconify/iconify'
+```
+
 ## Usage
 
 ###### Success (form has been submitted)
