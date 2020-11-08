@@ -1,85 +1,68 @@
 <template>
   <v-app>
-    <SystemBar />
-    <!-- <v-main app tag="main"> -->
-      <v-container fluid fill-height>
-        <v-btn @click="popupOpened = true">Success</v-btn>
-        <v-btn @click="popupErrorOpened = true">Error</v-btn>
-        <v-btn @click="popupEmailDisabled = true">Email disabled</v-btn>
-      </v-container>
-      <UserContact :userForm="userForm" />
-      <PopupError :opened.sync="popupErrorOpened" />
-      <PopupEmailDisabled :opened.sync="popupEmailDisabled" />
-      <Popup :opened.sync="popupOpened" />
-    <!-- </v-main> -->
-    <Footer />
+    <v-container fluid fill-height>
+      <v-btn text @click="success">Success</v-btn>
+      <v-btn text @click="error">Error</v-btn>
+      <v-btn text @click="disable">Disabled action</v-btn>
+      <v-btn text @click="sample">Other message</v-btn>
+    </v-container>
+    <Popup
+      :opened.sync="popupOpened"
+      :type="popupType"
+      :title="title"
+      :text="text"
+      :color="color"
+    />
   </v-app>
 </template>
 
 <script>
 
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
-import SystemBar from 'pineapple-system-bar'
-import 'pineapple-system-bar/dist/pineapple-system-bar.css'
-import Footer from 'pineapple-footer'
-import 'pineapple-footer/dist/pineapple-footer.css'
-
-import 'pineapple-footer/css/main.css'
-
-import UserContact from './components/UserContact.vue'
-
+import 'pineapple-styles'
 import Popup from './components/Popup.vue'
-import PopupError from './components/PopupError.vue'
-import PopupEmailDisabled from './components/PopupEmailDisabled.vue'
 
 export default {
   name: 'App',
 
   components: {
-    SystemBar,
-    Popup,
-    PopupError,
-    PopupEmailDisabled,
-    UserContact,
-    Footer
+    Popup
   },
 
   data: () => ({
-    ready: false,
-    page: null,
-    goto: null,
     popupOpened: false,
-    popupErrorOpened: false,
-    popupEmailDisabled: false
+    popupType: '',
+    title: '',
+    text: '',
+    color: ''
   }),
   computed: {
-    ...mapState(['viewportWidth', 'pages', 'selectors']),
-    ...mapState('content', ['browserTabTitle', 'footer']),
-    ...mapState('page-1', ['userForm'])
+    ...mapState(['viewportWidth'])
   },
   methods: {
-    ...mapActions('content', {
-      getContent: 'GET_CONTENT'
-    }),
-    ...mapActions('testimonials', {
-      getTestimonials: 'GET_CONTENT'
-    }),
-    ...mapActions('contact', {
-      updateFields: 'SET_FIELDS_TO_SHOW'
-    }),
+    success () {
+      this.popupType = 'success'
+      this.popupOpened = true
+    },
+    error () {
+      this.popupType = 'error'
+      this.popupOpened = true
+    },
+    disable () {
+      this.popupType = 'disabled'
+      this.popupOpened = true
+    },
+    sample () {
+      this.popupType = ''
+      this.title = 'Pineapple NET'
+      this.text = 'Welcome, human! Welcome, human! Welcome, human! Welcome, human! Welcome, human! Welcome, human! Welcome, human! Welcome, human! Welcome, human! Welcome, human!'
+      this.color = '#f50'
+      this.popupOpened = true
+    },
     onResize () {
       this.$store.commit('CHANGE_VIEWPORT')
     }
-  },
-  beforeMount () {
-    this.getContent()
-      .then((response) => {
-        document.title = this.browserTabTitle
-        this.updateFields(this.userForm.fieldsToShow)
-        this.ready = true
-      })
-    this.getTestimonials()
   },
   mounted () {
     this.onResize()

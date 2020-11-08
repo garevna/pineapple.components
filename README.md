@@ -47,34 +47,12 @@ const PopupStyles = require('pineapple-popup/dist/pineapple-popup.css')
 ```
 ###### Any other message
 
-You can send any info to component Popup through the prop `data`
+You can send any info to component `Popup`:
 ```
-<Popup :data="popupContent" :opened="popupOpened" />
-```
-where
-```
-popupContent: {
-  header: '...',
-  color: '#000',
-  text: '...'
-}
-```
-
-________________________
-
-#### You can add the global styles and fonts to the project from this package
-
-You can install the fonts and variables of pineapple.net.au projects so:
-
-###### main.js
-```
-import 'pineapple-popup/css/fonts.scss'
-import 'pineapple-popup/css/variables.scss'
-```
-
-You can install global styles of pineapple.net.au projects so:
-
-###### App.vue
-```
-import 'pineapple-popup/css/main.css'
+<Popup
+  :title="title"
+  :text="text"
+  :color="color"
+  :opened="popupOpened"
+/>
 ```

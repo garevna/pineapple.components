@@ -1,6 +1,6 @@
 {
   "name": "pineapple-popup",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Component for npm registry",
   "keywords": [
     "pineapple",
@@ -13,18 +13,14 @@
   "main": "./dist/pineapple-popup.common.js",
   "files": [
     "dist/*",
-    "css/*"
+    "README.md"
   ],
   "scripts": {
     "css-build": "node-sass --omit-source-map-url css/main.css dist/main.css",
     "css-watch": "npm run css-build -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "popup": "vue-cli-service build --target lib --name pineapple-popup ./src/components/popup-index.js",
-    "footer": "vue-cli-service build --target lib --name pineapple-footer ./src/components/footer-index.js",
-    "system-bar": "vue-cli-service build --target lib --name pineapple-system-bar ./src/components/system-bar-index.js",
-    "testimonials": "vue-cli-service build --target lib --name pineapple-testimonials ./src/components/testimonials-index.js",
-    "contact-form": "vue-cli-service build --target lib --name pineapple-contact-form ./src/components/contact-form-index.js",
+    "package": "vue-cli-service build --target lib --name pineapple-popup ./src/components/popup-index.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
