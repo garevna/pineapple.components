@@ -860,11 +860,6 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@iconify/iconify@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@iconify/iconify/-/iconify-1.0.7.tgz#22e6d384482995738746eeb38b9b76588df41d57"
-  integrity sha512-qCbH1V/Ceg302lrgBiiXCZAyqMAq8KqsHYokCpUvgBH6yYfAmvlSkEEBrmJdHofQvfY/+xaeQcsOOTjW7JakNw==
-
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@intervolga/optimize-cssnano-plugin/-/optimize-cssnano-plugin-1.0.6.tgz#be7c7846128b88f6a9b1d1261a0ad06eb5c0fdf8"

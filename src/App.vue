@@ -14,8 +14,6 @@ import 'pineapple-styles'
 
 import FAQ from '@/components/FAQ.vue'
 
-import '@iconify/iconify'
-
 export default {
   name: 'App',
 

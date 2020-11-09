@@ -1,20 +1,20 @@
 {
   "name": "pineapple-faq",
-  "version": "1.0.7",
-  "description": "Component for npm registry",
+  "version": "1.0.8",
+  "description": "Component for npm registry (without mdi, optimized for Nuxt)",
   "author": "garevna <irina.h.fylyppova@gmail.com>",
   "keywords": [
     "pineapple",
     "component",
     "npm",
     "registry",
-    "faq"
+    "faq",
+    "nuxt"
   ],
   "repository": "https://github.com/garevna/pineapple.components/tree/faq",
   "main": "./dist/pineapple-faq.common.js",
   "files": [
     "dist/*",
-    "css/*",
     "README.md"
   ],
   "scripts": {
@@ -26,8 +26,6 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@iconify/iconify": "^1.0.7",
-    "core-js": "^3.6.5",
     "pineapple-styles": "^1.1.9",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11",

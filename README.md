@@ -17,20 +17,6 @@ import 'pineapple-faq'
 import 'pineapple-faq/dist/pineapple-faq.css'
 ```
 
-### iconify
-
-In order to avoid loading all Material Design Icons and associated fonts, we use **iconify**
-
-First of all we need to install this package:
-```
-yarn add @iconify/iconify
-```
-
-Then we should add this import into App.js:
-```
-import '@iconify/iconify'
-```
-
 ### Use the component
 
 ```
