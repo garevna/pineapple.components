@@ -15,6 +15,7 @@ import { mapState, mapActions } from 'vuex'
 
 import 'pineapple-styles'
 import 'pineapple-popup'
+import 'pineapple-popup/dist/pineapple-popup.css'
 
 import UserContact from './components/UserContact.vue'
 

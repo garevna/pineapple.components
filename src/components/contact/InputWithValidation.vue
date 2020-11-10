@@ -70,7 +70,7 @@ export default {
       const error = this.field.required ? !this.field.validator(val) : false
       this.$emit('update:error', error)
       this.color = error ? this.errorColor : this.validColor
-      this.validationIcon = error ? '$invalid' : ''
+      this.validationIcon = error ? '!' : ''
     }
   }
 }

@@ -71,7 +71,7 @@ export default {
       const error = this.field.required ? this.field.available.indexOf(val) === -1 : false
       this.$emit('update:error', error)
       this.color = error ? this.errorColor : this.validColor
-      this.validationIcon = error ? '$invalid' : ''
+      this.validationIcon = error ? '!' : ''
     }
   }
 }

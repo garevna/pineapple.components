@@ -4,15 +4,7 @@ import Vuetify from 'vuetify/lib'
 Vue.use(Vuetify)
 
 export default new Vuetify({
-  icons: {
-    iconfont: 'mdi',
-    values: {
-      expand: 'mdi-chevron-down',
-      valid: 'mdi-check-bold',
-      invalid: 'mdi-alert-outline',
-      home: 'mdi-home-circle'
-    }
-  },
+  treeShake: true,
   theme: {
     themes: {
       light: {

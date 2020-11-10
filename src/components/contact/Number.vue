@@ -70,7 +70,7 @@ export default {
       const error = !val.match(/^[0-9]*$/) || (this.field.required && !val)
       this.$emit('update:error', error)
       this.color = error ? this.errorColor : this.validColor
-      this.validationIcon = error ? '$invalid' : ''
+      this.validationIcon = error ? '!' : ''
     }
   }
 }
